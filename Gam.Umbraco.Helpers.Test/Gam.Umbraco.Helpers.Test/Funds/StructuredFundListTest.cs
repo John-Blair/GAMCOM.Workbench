@@ -21,6 +21,7 @@ namespace Gam.Umbraco.Helpers.Test
                     Console.WriteLine("   " + eachFund.FundName);
                 }
             }
+            var i = 1;
 
 
         }
