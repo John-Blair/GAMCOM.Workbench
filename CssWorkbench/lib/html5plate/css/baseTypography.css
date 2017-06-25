@@ -1,0 +1,5 @@
+/* Standard Screens*/
+body {
+  font: normal 13px/1.3em Arial, Helvetica, sans-serif;
+}
+/* TODO: Add font sizes for different devices - based on standard media queries */

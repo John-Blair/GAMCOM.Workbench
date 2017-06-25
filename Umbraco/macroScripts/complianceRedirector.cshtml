@@ -1,0 +1,32 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] complianceRedirector
+    *                      [ ] 
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    *      none
+    * 
+    * NOTES
+    *       
+    *   Search the children of the current node, looking for the first one that matches 
+    *   the current compliance group.
+    * 
+    * 
+    ****/
+
+    foreach (DynamicNode eachChild in Model.Children)
+    {
+        if (eachChild.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+        {
+            Response.Redirect(eachChild.Url);
+            break;
+        }
+    }
+}

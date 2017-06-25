@@ -1,0 +1,45 @@
+﻿@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@Html.Raw(TranslatedListsFacade.GetListMessages("chooseProfileMessages"))
+
+<form class="chooseProfile">
+    <div>
+        <select id="chooseProfileProfessionalCountry" title="@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)"  onchange="gam.form.chooseProfile.selectionChanged();">
+            <option value="">@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)</option>
+            @Html.Raw(TranslatedListsFacade.GetSelfCertListAsHTMLOptions("1", LanguageFacade.CurrentLanguage))
+        </select>
+
+        <select id="chooseProfileIndividualCountry" title="@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)" class="hidden" onchange="gam.form.chooseProfile.selectionChanged();">
+            <option value="">@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)</option>
+            @Html.Raw(TranslatedListsFacade.GetSelfCertListAsHTMLOptions("0", LanguageFacade.CurrentLanguage))
+        </select>
+
+    </div>
+
+    <div>
+        <select id="chooseProfileLanguage" title="@LanguageFacade.DictionaryItem("selectlanguage",LanguageFacade.CurrentLanguage)"  onchange="gam.form.chooseProfile.selectionChanged();">
+            <option value="">@LanguageFacade.DictionaryItem("selectlanguage",LanguageFacade.CurrentLanguage)</option>
+            @Html.Raw(TranslatedListsFacade.GetListAsHTMLOptions("Languages", LanguageFacade.CurrentLanguage,LanguageFacade.CurrentLanguage))
+        </select>
+    </div>
+
+    <div>
+        <select id="chooseProfileInvestorType" title="@LanguageFacade.DictionaryItem("investortype",LanguageFacade.CurrentLanguage)"  onchange="gam.form.chooseProfile.investorTypeSelectionChanged();">
+            <option value="">@LanguageFacade.DictionaryItem("investortype",LanguageFacade.CurrentLanguage)</option>
+            @Html.Raw(TranslatedListsFacade.GetListAsHTMLOptions("InvestorType", LanguageFacade.CurrentLanguage))
+        </select>
+    </div>
+
+    <div class="clearfix">
+        <a id="chooseProfileSubmitButton" href="#" class="G_Highlight smallButton" onclick="return gam.form.chooseProfile.submitForm();">Go</a>
+    </div>
+    <div id="chooseProfileError" class="G_Error"></div>
+
+</form>
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+﻿@inherits umbraco.MacroEngines.DynamicNodeContext
+<form id="findDocument">
+    <div class="findDocumentTable clearfix">
+        <div class="documentTitle">Find a document:</div>
+
+        <div class="documentSearchPanel">
+            <input name="documentTextbox" class="documentTextbox">
+            <a href="#" id="findDocumentSubmitButton" class="G_Highlight smallButton" onclick="return gam.umbraco.client.services.fund.findDocument();" >Go</a>
+        </div>
+    </div>
+
+    <div class="findDocumentFilterTable">
+       
+        <div class="row clearfix">
+            <div class="col1">
+                <input name="fundFactSheet" type="checkbox" value="1">Fund Fact Sheet</div>
+            <div class="col2">
+                <input name="kIID" type="checkbox" value="2"/>KIID</div>
+        </div>
+        <div class="row clearfix">
+            <div class="col1">
+                <input name="supplementalInformation" type="checkbox" value="3"/>Supplemental Information</div>
+            <div class="col2">
+                <input name="fundInformationSheet" type="checkbox" value="4"/>Fund Information Sheet</div>
+        </div>
+        <div class="row clearfix">
+            <div class="col1">
+                <input name="applicationForm" type="checkbox" value="5"/>Application Form</div>
+            <div class="col2">
+                <input name="prospectus" type="checkbox" value="6"/>Prospectus</div>
+        </div>
+        <div class="row clearfix">
+            <div class="col1">
+                <input name="annualReport" type="checkbox" value="7"/>Annual Report</div>
+            <div class="col2">
+                <input name="semiAnnualReport"  type="checkbox" value="8"/>Semi Annual Report</div>
+        </div>
+        <div class="row clearfix">
+            <div class="col1 last">
+                <input name="reportableIncomeStatement" type="checkbox" value="9"/>Reportable Income Statement</div>
+        </div>
+        <div class="row clearfix">
+            <hr/>
+            <div class="col1">
+                <input name="toggleFilters" type="checkbox" value="" onclick="gam.helper.toggle(this);"/>Toggle All Filters</div>
+            <div class="col2" id="findDocumentServiceResult"></div>
+        </div>
+
+    </div>
+</form>
+

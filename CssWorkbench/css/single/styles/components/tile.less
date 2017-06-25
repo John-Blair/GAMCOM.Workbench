@@ -1,0 +1,78 @@
+/****
+ *  
+ *  tile.less
+ *  =========================================================================== 
+ *
+ *  for tiled pages
+ *
+ *
+ ****/
+
+
+
+.tileContainer {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.tileContainer:before, .tileContainer:after {
+  display: table;
+  content: " ";
+}
+
+.tileContainer:after {
+  clear: both;
+}
+
+.tileContainer
+{
+    position: relative;
+}
+
+.tile
+{
+    position: absolute;
+    width: 247px;
+    margin: 0px 12px 12px 0px;
+    height: 250px;
+    text-align: left;
+    opacity: 0.1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+}
+
+.tile-wide
+{
+    width: 506px;
+}
+
+
+.tileContainer{ width: 1024px; }
+
+@media (max-width:1023px) {
+    .tileContainer{ width: 765px; }
+}
+
+@media (max-width:764px) {
+    .tileContainer { width: 506px; }
+}
+
+@media (max-width:505px) {
+    .tileContainer { width: 480px; }
+    .tile, .tile-wide
+    {
+        width: 480px;
+
+        /* Single tile - so bin right margin, but keep bottom margin*/
+        margin-right: 0px;
+    }
+}
+
+@media (max-width:479px) {
+    .tileContainer{ width: 320px; }
+    .tile, .tile-wide
+    {
+        width: 320px;
+        margin-right: 0px;
+    }
+}
+

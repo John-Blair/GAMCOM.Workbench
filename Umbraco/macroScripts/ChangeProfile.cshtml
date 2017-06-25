@@ -1,0 +1,44 @@
+﻿@inherits umbraco.MacroEngines.DynamicNodeContext
+@using Gam.Umbraco.Helpers
+
+<div class="hidden">
+
+    <div id="changeProfileDialog" class="G_BlackDialog" title="Change Profile">
+
+            <form class="changeProfile">
+                <h2>@LanguageFacade.DictionaryItem("chooseyourprofile", LanguageFacade.CurrentLanguage)<span class="G_SubHeading">&nbsp;</span></h2>
+                <div>
+                    <select name="changeProfileProfessionalCountry" id="changeProfileProfessionalCountry" title="@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)" class="profileSelection" onchange="gam.form.changeProfile.selectionChanged();">
+                        <option value="">@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)</option>
+                        @Html.Raw(TranslatedListsFacade.GetSelfCertListAsHTMLOptions("1", LanguageFacade.CurrentLanguage))
+                    </select>
+
+                    <select name="changeProfileIndividualCountry" id="changeProfileIndividualCountry" title="@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)" class="profileSelection hidden" onchange="gam.form.changeProfile.selectionChanged();">
+                        <option value="">@LanguageFacade.DictionaryItem("selectcountry",LanguageFacade.CurrentLanguage)</option>
+                        @Html.Raw(TranslatedListsFacade.GetSelfCertListAsHTMLOptions("0", LanguageFacade.CurrentLanguage))
+                    </select>
+                </div>
+
+                <div>
+                    <select name="changeProfileLanguage" id="changeProfileLanguage" title="@LanguageFacade.DictionaryItem("selectlanguage",LanguageFacade.CurrentLanguage)" class="profileSelection" onchange="gam.form.changeProfile.selectionChanged();">
+                        <option value="">@LanguageFacade.DictionaryItem("selectlanguage",LanguageFacade.CurrentLanguage)</option>
+                        @Html.Raw(TranslatedListsFacade.GetListAsHTMLOptions("Languages", LanguageFacade.CurrentLanguage,LanguageFacade.CurrentLanguage))
+                    </select>
+                </div>
+
+                <div>
+                    <select name="changeProfileInvestorType" id="changeProfileInvestorType" title="@LanguageFacade.DictionaryItem("investortype",LanguageFacade.CurrentLanguage)" class="profileSelection" onchange="gam.form.changeProfile.investorTypeSelectionChanged();">
+                        <option value="">@LanguageFacade.DictionaryItem("investortype",LanguageFacade.CurrentLanguage)</option>
+                        @Html.Raw(TranslatedListsFacade.GetListAsHTMLOptions("InvestorType", LanguageFacade.CurrentLanguage))
+                    </select>
+                </div>
+
+                <div class="clearfix">
+                    <a id="changeProfileSubmitButton" href="/en/uk.aspx" class="G_Highlight G_Button G_Proceed" onclick="return gam.form.changeProfile.submitForm();">@LanguageFacade.DictionaryItem("ok", LanguageFacade.CurrentLanguage)</a>
+                    <a id="changeProfileCancelButton" href="#" class="G_Highlight G_Button " onclick="return gam.form.changeProfile.cancel(); ">@LanguageFacade.DictionaryItem("cancel", LanguageFacade.CurrentLanguage)</a>
+                </div>
+                <div id="changeProfileError" class="G_Error"></div>
+
+            </form>
+        </div>
+</div>

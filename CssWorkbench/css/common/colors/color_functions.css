@@ -1,0 +1,13 @@
+/****
+ *  
+ *  color_functions.less
+ *  =========================================================================== 
+ *
+ *  less mixin functions to produce colours with IE-safe fallbacks
+ *  proper browsers, which support opacity, get a value like rgba(255, 255, 255, 0.2) 
+ *
+ *  how:
+ *  the mixin function creates two properties, the first with no opacity (this is what IE will use)
+ *  the second value is what the sensible browser will use, IE will ignore it because it won't understand the colour definition
+ * 
+ ****/

@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CssWorkbench", "CssWorkbench\CssWorkbench.csproj", "{8DCCF7B2-AA44-4BC5-96F0-44E1E6C00539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoWorkbench", "Umbraco\UmbracoWorkbench.csproj", "{BB88684B-BE94-45AC-AD02-4C861178821A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scripts", "Scripts\Scripts.csproj", "{7F65EEFB-4789-47E9-9928-721E64F76B0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.Helpers", "Gam.Umbraco.Helpers\Gam.Umbraco.Helpers.csproj", "{E23F4304-FC80-4898-AD02-9D23C458F5AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.Plugins.FundMedia", "Gam.Umbraco.Plugins.FundMedia\Gam.Umbraco.Plugins.FundMedia.csproj", "{404782F2-49DB-41CE-97B1-B9B9615B88CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.Helpers.Test", "Gam.Umbraco.Helpers.Test\Gam.Umbraco.Helpers.Test\Gam.Umbraco.Helpers.Test.csproj", "{F98626D0-89AE-4014-8D79-235FB22B474B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.Plugins.CustomContentMenu", "Gam.Umbraco.Plugins.CustomContentMenu\Gam.Umbraco.Plugins.CustomContentMenu.csproj", "{33C5CFC9-A9EC-4B78-BA25-CA43D146B354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.HttpModules", "Gam.Umbraco.HttpModules\Gam.Umbraco.HttpModules.csproj", "{5350B432-61E0-4C68-B8BB-6252849DD3F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gam.Umbraco.Services", "Gam.Umbraco.Services\Gam.Umbraco.Services.csproj", "{BFEC5225-1F92-4580-A78A-221FE7507889}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://msas-ldn29t:8080/tfs/gam
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CssWorkbench\\CssWorkbench.csproj
+		SccProjectName1 = CssWorkbench
+		SccLocalPath1 = CssWorkbench
+		SccProjectUniqueName2 = Umbraco\\UmbracoWorkbench.csproj
+		SccProjectName2 = Umbraco
+		SccLocalPath2 = Umbraco
+		SccProjectUniqueName3 = Scripts\\Scripts.csproj
+		SccProjectName3 = Scripts
+		SccLocalPath3 = Scripts
+		SccProjectUniqueName4 = Gam.Umbraco.Helpers\\Gam.Umbraco.Helpers.csproj
+		SccProjectName4 = Gam.Umbraco.Helpers
+		SccLocalPath4 = Gam.Umbraco.Helpers
+		SccProjectUniqueName5 = Gam.Umbraco.Plugins.FundMedia\\Gam.Umbraco.Plugins.FundMedia.csproj
+		SccProjectName5 = Gam.Umbraco.Plugins.FundMedia
+		SccLocalPath5 = Gam.Umbraco.Plugins.FundMedia
+		SccProjectUniqueName6 = Gam.Umbraco.Helpers.Test\\Gam.Umbraco.Helpers.Test\\Gam.Umbraco.Helpers.Test.csproj
+		SccProjectName6 = Gam.Umbraco.Helpers.Test/Gam.Umbraco.Helpers.Test
+		SccLocalPath6 = Gam.Umbraco.Helpers.Test\\Gam.Umbraco.Helpers.Test
+		SccProjectUniqueName7 = Gam.Umbraco.Plugins.CustomContentMenu\\Gam.Umbraco.Plugins.CustomContentMenu.csproj
+		SccProjectName7 = Gam.Umbraco.Plugins.CustomContentMenu
+		SccLocalPath7 = Gam.Umbraco.Plugins.CustomContentMenu
+		SccProjectUniqueName8 = Gam.Umbraco.HttpModules\\Gam.Umbraco.HttpModules.csproj
+		SccProjectName8 = Gam.Umbraco.HttpModules
+		SccLocalPath8 = Gam.Umbraco.HttpModules
+		SccProjectUniqueName9 = Gam.Umbraco.Services\\Gam.Umbraco.Services.csproj
+		SccProjectName9 = Gam.Umbraco.Services
+		SccLocalPath9 = Gam.Umbraco.Services
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DCCF7B2-AA44-4BC5-96F0-44E1E6C00539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCCF7B2-AA44-4BC5-96F0-44E1E6C00539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCCF7B2-AA44-4BC5-96F0-44E1E6C00539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCCF7B2-AA44-4BC5-96F0-44E1E6C00539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB88684B-BE94-45AC-AD02-4C861178821A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB88684B-BE94-45AC-AD02-4C861178821A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB88684B-BE94-45AC-AD02-4C861178821A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB88684B-BE94-45AC-AD02-4C861178821A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F65EEFB-4789-47E9-9928-721E64F76B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F65EEFB-4789-47E9-9928-721E64F76B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F65EEFB-4789-47E9-9928-721E64F76B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E23F4304-FC80-4898-AD02-9D23C458F5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E23F4304-FC80-4898-AD02-9D23C458F5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E23F4304-FC80-4898-AD02-9D23C458F5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E23F4304-FC80-4898-AD02-9D23C458F5AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404782F2-49DB-41CE-97B1-B9B9615B88CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404782F2-49DB-41CE-97B1-B9B9615B88CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404782F2-49DB-41CE-97B1-B9B9615B88CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404782F2-49DB-41CE-97B1-B9B9615B88CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98626D0-89AE-4014-8D79-235FB22B474B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98626D0-89AE-4014-8D79-235FB22B474B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98626D0-89AE-4014-8D79-235FB22B474B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98626D0-89AE-4014-8D79-235FB22B474B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C5CFC9-A9EC-4B78-BA25-CA43D146B354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C5CFC9-A9EC-4B78-BA25-CA43D146B354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C5CFC9-A9EC-4B78-BA25-CA43D146B354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C5CFC9-A9EC-4B78-BA25-CA43D146B354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5350B432-61E0-4C68-B8BB-6252849DD3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5350B432-61E0-4C68-B8BB-6252849DD3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5350B432-61E0-4C68-B8BB-6252849DD3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5350B432-61E0-4C68-B8BB-6252849DD3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEC5225-1F92-4580-A78A-221FE7507889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEC5225-1F92-4580-A78A-221FE7507889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEC5225-1F92-4580-A78A-221FE7507889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEC5225-1F92-4580-A78A-221FE7507889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

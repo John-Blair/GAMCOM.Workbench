@@ -1,0 +1,83 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] languageRedirector
+    *                      [ ] 
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    *      languagePreference [string] 
+    * 
+    * NOTES
+    *       
+    *   Search the children of the current node, looking for the first one that matches 
+    *   the current compliance group.
+    * 
+    * 
+    ****/
+    
+
+    // find the preferred language node, or the default EN language node if no preference supplied
+
+    var targetLanguage = "EN";
+    
+    DynamicNode targetNode = null;
+    DynamicNode enNode = null;
+
+    if (!string.IsNullOrEmpty(@Parameter.languagePreference))
+    {
+        targetLanguage = @Parameter.languagePreference;
+    }
+    
+    
+    foreach (DynamicNode eachChild in Model.Children)
+    {
+
+        if (eachChild.Name == "EN")
+        {
+            enNode = eachChild;
+        }
+        
+        if (eachChild.Name == targetLanguage)
+        {
+            targetNode = eachChild;
+        }
+    }
+
+    // if we couldn't find the requested node, use the EN node 
+
+    if (targetNode  == null)
+    {
+        targetNode = enNode;
+    }
+    
+    
+    // now scan the children of the language node to find which page the user should see
+
+    
+    
+    if (targetNode != null) 
+    {
+        string complianceGroup = UserFacade.CurrentComplianceGroup;
+        foreach (DynamicNode eachChild in targetNode.Children)
+        {
+            if (eachChild.IsCompliedFor(complianceGroup))
+            {
+                Response.Redirect(eachChild.Url);
+                break;
+            }
+        }
+    }
+    else
+    {
+        // error? if there's no EN node...
+    }
+    
+}
+
+

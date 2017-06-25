@@ -1,0 +1,125 @@
+﻿/****
+ *  
+ *  documentCentre.less
+ *  =========================================================================== 
+ *
+ *  styles for the document centre page.
+ *
+ ****/
+
+
+// Mixin to style a button that blends with the selected theme.
+.goButton {
+    a.smallButton {
+        
+        background-image: url(/media/1068/bullet_triangle_white.gif);
+        background-repeat: no-repeat;
+        background-position: 90% center;
+        text-decoration: none;
+
+        height: 14px;
+        margin-left: 10px;
+        width: 40px;
+    }
+
+    // Override themes bunging a background image in.
+    a:before {
+        content: "";
+    }
+
+}
+
+
+.findDocumentTable {
+
+    // align with the top of the tile content.
+    margin-top: 10px;
+
+    .documentTitle {
+        font-size: 16px;
+        padding-right: 5px;
+        float: left;
+        // Makes sure margin present when mobilised.
+        margin-bottom: 10px;
+    }
+
+    .documentSearchPanel {
+        float: left;
+
+        .documentTextbox {
+            width: 200px;
+        }
+    }
+
+    // Go Button 
+    .goButton;
+}
+
+
+// Avoiding use of table to make content more fluid for mobile devices.
+.findDocumentFilterTable {
+    margin-top: 10px;
+
+    .row {
+        margin-bottom: 10px;
+    }
+
+    .col1 {
+        float: left;
+        width: 240px;
+    }
+
+    .col2 {
+        float: left;
+         width: 240px;
+    }
+
+    input {
+        margin-right: 10px;
+    }
+}
+
+
+// Select a manager ddl.
+.selectManagerPanel {
+    margin-top: 10px;
+
+    .goButton;
+
+    select {
+        height: 22px;
+    }
+
+    .selectManagerTitle {
+        font-size: 16px;
+        padding-right: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+.mobileSearchDocuments () {
+
+    // Switch margins off the rows and onto the cells - which are now stacked.
+    .findDocumentFilterTable {
+
+        .row {
+            margin-bottom: 0px;
+        }
+
+        .col1, .col2 {
+            margin-bottom: 10px;
+        }
+    }
+
+
+}
+
+@media (max-width:505px)
+{
+    .mobileSearchDocuments();
+}
+
+@media (max-width:479px)
+{
+    .mobileSearchDocuments();
+}

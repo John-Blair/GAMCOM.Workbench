@@ -1,0 +1,84 @@
+﻿@using umbraco.MacroEngines
+@using Umbraco.Core
+@using Umbraco.Core.Models
+@using Umbraco.Core.Services
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+        /****
+        * 
+        * SCRIPT               [>] relatedLinks
+        *                      [ ] render the set of related links attached to the current item
+        * -----------------------------------------------------------------------------------------------
+        * 
+        * PARAMETERS        
+        * 
+        * 
+        * NOTES
+        *  
+        * produces something like this, with the links propulated
+        * 
+        *  <ul class="G_Highlight">
+        *      <li class="G_ListSeparator"><a href="#">Careers At GAM</a></li>
+        *      <li class="G_ListSeparator"><a href="#">Our Managers</a></li>
+        *      <li><a href="#">News and Views</a></li>
+        *  </ul>
+        * 
+        ****/
+        
+        
+        DynamicNode root = Model;
+        
+        if (!string.IsNullOrEmpty(@Parameter.contextIdOverride))
+        {
+            root = new DynamicNode(@Parameter.contextIdOverride);
+        }
+        
+        
+        // first compliance check, the link itself
+        var links = root.DescendantsOrSelf("RelatedLink").Where(x => x.IsCompliedFor(UserFacade.CurrentComplianceGroup));
+
+        // second compliance check, the target of each link
+        DynamicNodeList compliedLinks = new DynamicNodeList();
+        
+        foreach (DynamicNode eachLink in links)
+        {
+
+            DynamicNode targetPage = null;
+            var targetNodeId = eachLink.SafeProperty("Link");
+            if (!string.IsNullOrEmpty(targetNodeId))
+            {
+                targetPage = new DynamicNode(targetNodeId);
+                if (targetPage.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+                {
+                    compliedLinks.Add(eachLink);
+                }
+            }
+            
+            
+        }
+
+        int linkCount = 0;
+        
+    <ul class="G_Highlight">
+        @foreach (DynamicNode eachLink in compliedLinks)
+        {
+            if (eachLink.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+            {
+
+                var linkClass = "G_ListSeparator";
+                
+                if (++linkCount == links.Count())
+                {
+                    linkClass = "";
+                }
+                
+                DynamicNode targetPage = new DynamicNode(eachLink.SafeProperty("Link"));
+                <li class="@linkClass"><a href="@targetPage.Url">@eachLink.Name</a></li>
+
+            }
+        }
+    </ul>                
+    
+}

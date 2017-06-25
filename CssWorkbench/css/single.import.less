@@ -1,0 +1,24 @@
+/****
+ *  
+ *  single.import.less
+ *  =========================================================================== 
+ *  
+ *  imports all of the site css, as less files 
+ *  the minified version of this can then be used by the site 
+ *  
+ *	or you could run it through the ajax minifer to produce _compiled.css
+ *  "C:\Program Files (x86)\Microsoft\Microsoft Ajax Minifier\AjaxMin" -clobber "$(ProjectDir)scripts\html5plate\css\normalize.css" "$(ProjectDir)scripts\html5plate\css\main.css" "$(ProjectDir)scripts\html5plate\css\baseTypography.css" "$(ProjectDir)css\layouts\commonLayout.css" "$(ProjectDir)css\layouts\homepageLayout.css" "$(ProjectDir)css\layouts\pageLayout.css" "$(ProjectDir)css\styles.css" "$(ProjectDir)css\layouts\commonLayout.mobile.css" "$(ProjectDir)css\styles.mobile.css" -o "$(ProjectDir)css\_compiled.css"
+ *
+ ****/
+
+// html5
+@import "../lib/html5plate/css/normalize.less";
+@import "../lib/html5plate/css/main.less";
+@import "../lib/html5plate/css/baseTypography.less";
+@import "common/reset.less";
+
+// styles : templates
+@import "single/styles/single.less";
+
+// mobile overrides
+@import "single/styles/single.mobile.less";

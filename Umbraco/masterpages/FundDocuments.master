@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+<!DOCTYPE html>
+<!--[if IE]><html class="ie"><![endif]-->	
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if IE ]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <![endif]-->
+
+    <title>GAM | Home</title>
+	<!--script src="//use.edgefonts.net/noticia-text.js"></!--script -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+	<link rel="stylesheet" href="/css/tile.import.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/scripts/lib/html5plate/js/html5shiv.js"></script>
+      <script src="/scripts/lib/pseudo.ie/selectivizr-min.js"></script>
+      <script src="/scripts/lib/media/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="tileContainer">		
+        <header class="<umbraco:Macro Alias="HeaderTheme" runat="server"></umbraco:Macro>">
+           <div class="clearfix topMenu">
+                <menu class="profileMenu">
+                    <a href="#" class="firstItem"><umbraco:Item field="#chooseyourprofile" runat="server" /></a>
+                    <a href="#"><umbraco:Item field="#login" runat="server" /></a>
+                    <a  href="#"><umbraco:Item field="#register" runat="server" /></a>
+                </menu>
+           </div>
+
+            <div class="clearfix middleMenu">
+                <a href="/"><img class="logo" src="/media/1008/logo.png" /></a>
+				<umbraco:Macro Alias="LanguageLinks" runat="server"></umbraco:Macro>
+            </div>
+
+            <div class="clearfix bottomMenu">
+                <menu class="operationsMenu">
+                    <a href="/<umbraco:Macro Alias="CurrentLanguage" runat="server"></umbraco:Macro>/documentcentre.aspx" class="firstItem"><umbraco:Item field="#documentcentre" runat="server" /></a>
+                    <a href="#" ><umbraco:Item field="#findafund" runat="server" /></a>
+                    <a href="#" ><umbraco:Item field="#contacts" runat="server" /></a>
+                    <a href="#" class="lastItem"><umbraco:Item field="#sitemap" runat="server" /></a>
+                </menu>
+
+                
+
+                <menu class="searchMenu">
+                    <div class="searchMenuBasicSearch">
+                        <form action="/" method="GET">
+					        <input type="search" id="basicSearch" name="basicSearch" class="basicSearchInput" placeholder="<umbraco:Item field="#searchgam.com" runat="server" />" /><button class="basicSearchButton">&nbsp;</button>
+			            </form>
+                    </div>
+                </menu>
+
+            </div>
+        </header>
+    </div>
+
+    <div id="tileContainer" class="tileContainer">
+		<umbraco:Macro Alias="searchResults" runat="server"></umbraco:Macro>
+    </div>
+
+    <div class="tileContainer">
+        <hr>
+        <footer>
+            <p>&copy; GAM 2014</p>
+        </footer>
+    </div>
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <script>window.jQuery || document.write('<script src="/scripts/lib/jQuery/jquery-1.10.2.min.js"><\/script>')</script>
+    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <script src="/scripts/lib/jQuery/jquery.placeholder.js"></script>
+    
+    
+    <script src="/scripts/app/header/header.js"></script>
+    <script src="/scripts/services/gam.helpers.js"></script>
+    <script src="/scripts/services/gam.umbraco.client.services.js"></script>
+
+</body>
+</html>
+
+</asp:Content>

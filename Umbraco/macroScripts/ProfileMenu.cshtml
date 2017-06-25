@@ -1,0 +1,54 @@
+@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] languageLink
+    *                      [ ] 
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    * 
+    * NOTES
+    *       
+    *   Create the language links in the page header
+    * 
+    ****/
+    
+    
+    <menu class="profileMenu">
+        @{
+            var firstItem ="firstItem";
+            var guestPCG =  "-Guest";
+            var changeProfilePrompt = LanguageFacade.DictionaryItem("chooseyourprofile", LanguageFacade.CurrentLanguage);
+            
+
+            if (UserFacade.CurrentComplianceGroup != guestPCG)
+            {
+                <a href="#" class="@firstItem" onclick="gam.umbraco.client.services.authorization.certifyAs('@guestPCG', function () { window.location.href = '/'; })">
+                    @LanguageFacade.DictionaryItem("globalhome", LanguageFacade.CurrentLanguage)
+                </a>
+                firstItem = "";
+                changeProfilePrompt = string.Format("{0}: {1} {2}",
+                    LanguageFacade.DictionaryItem("changeprofile", LanguageFacade.CurrentLanguage),
+                    LanguageFacade.CountryName(UserFacade.Country, LanguageFacade.CurrentLanguage),
+                    LanguageFacade.DictionaryItem(UserFacade.InvestorType, LanguageFacade.CurrentLanguage));
+            }
+            <a href="#" class="@firstItem" onclick="gam.form.changeProfile.chooseYourProfile();">
+                @changeProfilePrompt
+            </a>
+        }
+        <a href="#">
+            @LanguageFacade.DictionaryItem("login", LanguageFacade.CurrentLanguage)
+        </a>
+        <a href="#">
+            @LanguageFacade.DictionaryItem("register", LanguageFacade.CurrentLanguage)
+        </a>
+    </menu>
+    
+    
+}
+
+

@@ -1,0 +1,262 @@
+﻿@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/gradient_backgrounds.less";
+
+/****
+ *  
+ *  header.less
+ *  =========================================================================== 
+ *
+ *  Structure defined for the header.
+ *
+ *  Current structure is for profile menu, language menu, operations menu and search menu.
+ *  
+ *  Mobile and table arrangements are for a 3 button operations menu + search box.
+ *
+ ****/
+
+// Mixin:  Menu Item - structure for a standard "a" element menu item.
+// Profile menu differs from Language menu only by border styling and padding between elements.
+.MenuItem (@p_paddingLeft: 8px)
+{
+    a
+    {
+        padding-left: @p_paddingLeft;
+    }
+}
+
+
+// Mixin:  Navigation Menu Item - consistent structure for a block "a" element to give the appearance of a button.
+.NavMenuItem ()
+{
+    a
+    {
+        width: 163px;
+        
+        // Default display is in-line - make block and float to get multiple "buttons" on the same line.
+        display: inline-block;
+        float: left;
+        
+        // Apply a bit of space in the button around the text.
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        // Use margin to separate items vertically when stacked for mobile.
+        // Also used to keep the background color "bar" narrow - when all buttons are displayed on a single line.
+        margin-top: 0px;
+        margin-bottom: 0px; // Handle column reduction for mobile.
+        margin-left: 0px;
+
+        // Separate adjacent buttons
+        margin-right: 17px;
+    }
+}
+
+// Mobile Mixin : stack All Buttons And Menus (when used for 1 column display)
+// Same layout is used for the 1 column display of 480 and 1 column display of 320 i.e. iphone portrait and landscape
+.stackAllButtonsAndMenus (@p_width) {
+    .tileContainer > header .bottomMenu .operationsMenu a, .tileContainer > header .bottomMenu .searchMenu a {
+        // Stack all buttons.
+        float: none;
+        // Buttons take up the width of the container.
+        // Note: Any left/right padding, borders, or margins will push the button outside of its container.
+        // Note: Avoiding using width: 100% as it does not work when margins, padding, or borders are applied to the current element.
+        // Keep the button padding the same across all devices i.e. 5px left and right - shorten required width by this padding amount.
+        width: @p_width - 10;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+    // Stack all menus.
+    .tileContainer > header .bottomMenu .searchMenu,
+    .tileContainer > header .bottomMenu .searchMenu .searchMenuBasicSearch,
+    .tileContainer > header .bottomMenu .operationsMenu {
+        float: none;
+    }
+
+
+    // Allow all "buttons" to merge as a single list.
+    .tileContainer > header .bottomMenu .operationsMenu 
+    {
+        margin-bottom: 0px;
+    }
+
+    // Align size of basic search button with other link buttons - which don't have an adjacent icon button.
+    // This is the last control in the stack - so no bottom margin.
+    .tileContainer > header .bottomMenu .searchMenu .searchMenuBasicSearch button.basicSearchButton {
+        margin-right: 0px;
+        // Bug? When the "a" elements are stacked the bottom margin of one and the top margin of the next one appear to overlap - in IE and Chrome
+        // Compensate by removing the margins around input element to avoid "double" margins appearing only for input elements.
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .tileContainer > header .bottomMenu .searchMenu .searchMenuBasicSearch input.basicSearchInput {
+        width: @p_width - 23; //  -18 for the search button icon, -5 for padding left = -23  (480 or 320 based on parameter value).
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+// Main Entry Point:  Structure the page header.
+.tileContainer > header
+{
+    // Header has 3 menus within it - keep them consistent.
+    // Align the edges of the menu bars with the tiles.
+    // Provide bottom separation from each other and the tiles.
+    .topMenu, .middleMenu
+    {
+        margin: 10px;
+    }
+
+    .bottomMenu
+    {
+        margin-bottom: 15px;
+    }
+
+    .topMenu
+    {
+
+        .profileMenu
+        {
+            // Appear on the right.
+            float: right;
+            // Avoid links running into top of browser window.
+            padding-top: 5px;
+            // Menu Items: Profile, Login, Register - use a dashed separator.
+            .MenuItem();
+        }
+    }
+
+    .middleMenu
+    {
+        // Logo on the left - float it so that the language menu on the right is not forced below it.
+        .logo
+        {
+            float: left;
+        }
+        // Languages on the right.
+        .languageMenu
+        {
+            float: right;
+            // Vertical centering of language menu against the logo.
+            margin-top: 10px;
+            // EN | DE arranged close together
+            .MenuItem(4px);
+        }
+    }
+
+    .bottomMenu
+    {
+        // Present as a bar of buttons.
+        .operationsMenu
+        {
+            float: left;
+            // Avoid double bottom margin between operations menu and search menu.
+            margin: 10px 10px 10px 10px;
+            // Structure all the navigation menu items as buttons.
+            .NavMenuItem;
+
+        }
+
+       .operationsMenu a.lastItem
+        {
+            margin-right: 0px;
+        }
+
+        .searchMenu
+        {
+            float: right;
+             .NavMenuItem;
+            margin: 10px;
+
+            .searchMenuBasicSearch
+            {
+                float: left;
+
+                 // Search box is the only compound-control in the bar.
+                input.basicSearchInput
+                {
+                    width: 209px; // align with standard tile width
+
+                    // Keep padding and margins consistent with "a" element buttons.
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;
+                    padding-right: 0px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    //Give input a flat look so it aligns perfectly with the search icon.
+                    border: 0px;
+                }
+                // Search icon appears adjacent to the search input box.
+                button.basicSearchButton
+                {
+                    white-space: nowrap;
+                    // Keep padding and margins consistent with "a" element buttons.
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    // Indent the icon slightly.
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    //margin-right: 20px; // Consistent separation with "a" links.
+                    border: 0px;
+                    width: 18px; // + 132 = 150 same as links incl. padding.
+                }
+            }
+        }
+       
+    }
+
+
+}
+
+
+// Mobile variations
+@media (max-width:1023px)
+{
+    // 3 column details here (width: 765px) 
+    // 2 row arrangement: 4 buttons top line and search on 2nd line.
+
+    .tileContainer > header .bottomMenu {
+
+        // Avoid double margins and paddings on collapse to 2 rows.
+
+        .searchMenu {
+            margin-top: 0px;
+            float: left;
+
+            .searchMenuBasicSearch {
+                input.basicSearchInput {
+                    width: 720px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:764px)
+{
+    // Exclude the 10px margin either side of controls from the 506px container.
+    .stackAllButtonsAndMenus(486px);
+}
+
+@media (max-width:505px)
+{
+    // Large 1 column details here (width: 480px)
+    // Container Margin 2x10 leaving 460px for buttons.
+    .stackAllButtonsAndMenus(460px);
+}
+
+@media (max-width:479px)
+{
+    // Small 1 column details here (width: 320px)
+    // Container Margin 2x10 leaving 300px for buttons.
+    .stackAllButtonsAndMenus(300px);
+}

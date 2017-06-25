@@ -1,0 +1,145 @@
+@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/color_functions.less";
+@import "../../common/colors/solid_backgrounds.less";
+@import "../../common/colors/gradient_backgrounds.less";
+
+/****
+ *  
+ *  menu.layout.less
+ *  =========================================================================== 
+ *
+ *  menu layout are designed to be applied to menus in umbraco
+ * 
+ 
+ ****/
+
+
+
+.dynamicMenu {
+    // Allow close button to be positioned within this container.
+    margin-bottom: 12px;
+    position:relative;
+
+    // Pull the close button up over the menu content to avoid a bottom margin.
+    .closeButton 
+    {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        // Factor in half image width in left positioning of middle (512px).
+        left: 502px;
+    }
+}
+
+
+// No bottom margin.
+.menuTile {
+    float: left;
+    width: 247px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+
+    overflow: hidden;
+    height: auto;
+
+    // Exclude right most column from margin to file tile container  when floated.
+    &.menuCol0, &.menuCol1, &.menuCol2 {
+        margin-right: 12px;
+    }
+
+    &.menuCol3 {
+        margin-right: 0px;
+        clear: none;
+    }
+}
+
+
+@media (max-width:1023px)
+{
+
+    .menuTile {
+
+        &.menuCol0, &.menuCol1, &.menuCol3 {
+            margin-right: 12px;
+        }
+
+        // Make sure col3 wraps to the 1st col position on the 2nd line.
+        &.menuCol3 {
+            clear: left;
+        }
+
+
+        &.menuCol2 {
+            margin-right: 0px;
+        }
+    }
+
+    // 3 tile.
+    .dynamicMenu .closeButton 
+    {
+        left: 372px;
+    }
+}
+
+@media (max-width:764px)
+{
+    .menuTile {
+        &.menuCol0, &.menuCol2 {
+            margin-right: 12px;
+        }
+
+        &.menuCol1, &.menuCol3  {
+            margin-right: 0px;
+        }
+
+        &.menuCol3 {
+            clear: none;
+       }
+
+    }
+
+    // 2 tile.
+    .dynamicMenu .closeButton 
+    {
+        left: 243px;
+    }
+}
+
+@media (max-width:505px)
+{
+    .menuTile
+    {
+        width: 480px;
+        
+        &.menuCol0, &.menuCol1,&.menuCol2, &.menuCol3 {
+            margin-right: 0px;
+        }
+
+    }
+
+    // 1 tile.
+    .dynamicMenu .closeButton 
+    {
+        left: 230px;
+    }
+
+}
+
+@media (max-width:479px)
+{
+    .menuTile
+    {
+        width: 320px;
+        &.menuCol0, &.menuCol1,&.menuCol2, &.menuCol3 {
+            margin-right: 0px;
+        }
+
+    }
+
+    // 1 tile.
+    .dynamicMenu .closeButton 
+    {
+        left: 150px;
+    }
+}

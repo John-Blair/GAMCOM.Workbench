@@ -1,0 +1,33 @@
+.signIn label {
+  display: block;
+  font-weight: bold;
+  padding: 7px 0px 5px 0px;
+}
+.signIn input {
+  border: 1px solid #c6c9cc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 #ffffff;
+  font: 13px/20px 'Droid Sans', Arial, 'Helvetica Neue', 'Lucida Grande', sans-serif;
+  padding: 5px;
+  width: 95%;
+}
+.signIn fieldset {
+  border: none;
+  margin-top: 7px;
+  width: 100%;
+}
+.signIn fieldset input {
+  margin: 0;
+  width: auto;
+}
+.signIn fieldset label {
+  cursor: pointer;
+  float: left;
+  font-size: 12px;
+  font-weight: normal;
+  float: right;
+  padding: 15px 5px 0px 0px;
+}
+.signIn fieldset label input {
+  padding: 0;
+}

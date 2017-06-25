@@ -1,0 +1,139 @@
+
+/****
+ *  
+ *  singleFund.css
+ *  =========================================================================== 
+ *  
+ *  EXPLORER specific definitions can be applied using moderinzr syntax
+ *  For example: .ie .upperbanner { background-color: red; }
+ *
+ *  OO CSS Rules: 
+ * 
+ *      [1] No ID selectors
+ *      [2] No heights or widths
+ * 
+ ****/
+
+@import "baseStyles.less";
+
+// this is the top level of a NESTED class definition
+// everything under here is defined as if the long-hand body.singleFund > header
+
+body.single
+{
+    background-color: @colour_standard_background;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #5e5e6f;
+    line-height: 16px;
+
+    header
+    {
+        background-color: @colour_gam_green;
+        font-size: 0.9em;
+    }
+    /* Set paragraph styles to the same as existing single fund sites */
+    p
+    {
+        margin-right: 0px;
+        margin-bottom: 8px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .whiteShadowedBlock
+    {
+        .shadowedBlock;
+        background-color: white;
+    }
+    /* pageList */
+    .pageList
+    {
+        // background-image: url(/media/1150/menu-back.jpg) ;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+        .pageList > a
+        {
+            color: white;
+            font-size: 13px;
+            text-decoration: none;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: white;
+            padding-top: 3px;
+            padding-bottom: 3px;
+
+            &:hover
+            {
+                color: black;
+            }
+
+            &.selected
+            {
+                color: black;
+            }
+        }
+    /* videoList */
+    .videoList-dark > menu > a
+    {
+        color: white;
+        font-size: 11px;
+        font-weight: 400;
+        text-decoration: none;
+        /* this height correlates to the image, so I'm breaking the ocss rules and putting it here for now */
+        // Chrome displays a 1 pixel border occasionally when height is set explicitly - so removed it.
+        line-height: 24px;
+
+        &:hover
+        {
+            color: lightgray;
+        }
+
+        padding-left: 5px;
+        background-image: url(/media/4735/video_background.png);
+        background-repeat: no-repeat;
+        background-position: right;
+
+        &.featuredVideo
+        {
+            background-image: url(/media/45305/video-background-blue.jpg);
+        }
+
+    }
+
+
+    .videoList-dark-play-video > menu > a
+    {
+        color: white;
+        font-size: 11px;
+        font-weight: 400;
+        text-decoration: none;
+        /* this height correlates to the image, so I'm breaking the ocss rules and putting it here for now */
+        // Chrome displays a 1 pixel border occasionally when height is set explicitly - so removed it.
+        line-height: 24px;
+
+        &:hover
+        {
+            color: lightgray;
+        }
+
+        padding-left: 5px;
+        background-image: url(/media/4751/video_background_play_video.jpg);
+        background-repeat: no-repeat;
+        background-position: right;
+
+    }
+} // end of body.singleFund
+
+
+.ie body.single{
+	
+	// adjust font weight for better clarity in ie rendering
+	.videoList-dark > menu  > a
+	{
+		font-weight: 600;
+	}
+
+} 

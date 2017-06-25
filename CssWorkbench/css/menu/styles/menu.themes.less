@@ -1,0 +1,194 @@
+@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/color_functions.less";
+@import "../../common/colors/solid_backgrounds.less";
+@import "../../common/colors/gradient_backgrounds.less";
+
+/****
+ *  
+ *  menu.themes.less
+ *  =========================================================================== 
+ *
+ *  menu themes are designed to be applied to menus in umbraco, they allow the user to work with more
+ *  abstracted descriptions, rather than force them to hand-roll backgrounds, foregrounds, etc
+ * 
+ 
+ ****/
+
+/****
+ *  
+ *  MENU MIXIN FUNCIONS
+ *  =========================================================================== 
+ *
+ *  The following functions allow a menu theme to be mostly generated with a few parameters.
+ *
+ ****/
+
+
+// called by the .MenuTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// darker colours get a lighter style of highlight
+
+.MenuHighlight(@background) when (lightness(@background) < 70%)
+{
+    // tint white, 30%
+    @fadedColor: tint(@background, 30%);
+    .BackgroundColor(white, 0.3, @fadedColor);
+}
+
+// called by the .MenuTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// lighter colours get a darker style of highlight
+
+.MenuHighlight(@background) when (lightness(@background) >= 70%)
+{
+    // shade black, 20%
+    @fadedColor: shade(@background, 20%);
+    .BackgroundColor(black, 0.2, @fadedColor);
+}
+
+// the subheading is a light version of the background
+// proper browsers do this by using a highly transparent version of the text
+
+.MenuSubheadingColor(@color, @background)
+{
+    @fadedColor: tint(@background, 60%);
+    .Color(@color, 0.6, @fadedColor);
+}
+
+
+
+// MenuTheme brings everything together to create a Menu theme
+
+.MenuTheme(@background, @color) {
+
+    .Color(@color, .95, @color);
+
+    h2
+    {
+        .BorderBottom(@color, .50, @color);
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .MenuSubheadingColor(white, @background);
+    }
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+        .G_SubHeadingTextColor;
+    }
+
+    .G_Highlight
+    {
+        .MenuHighlight(@background);
+    }
+
+    .G_ListSeparator
+    {
+        // used when creating a division between li which are part of a <ul class="G_Highlight">
+        border-bottom: 1px dotted black;
+    }
+
+    a
+    {
+        color: white;
+    }
+
+    a:hover
+    {
+        // reuse subhead color for hover
+        .MenuSubheadingColor(@color, @background);
+    }
+}
+
+
+/****
+ *  
+ *  MENU THEMES
+ *  =========================================================================== 
+ *
+ *  These are the public classes which can be applied to a menu.
+ * 
+ ****/
+
+
+.G_GreenMenu
+{
+    .BG_GAMGreen100Tint;
+
+    .MenuTheme(@COLOR_GAM_GREEN_100, white);
+}
+
+.G_BlackMenu
+{
+    background-color: black;
+
+    .MenuTheme(black, white);
+}
+
+.G_DarkPurpleMenu
+{
+    .BG_GAMPurple100Tint;
+
+    .MenuTheme(@COLOR_GAM_PURPLE_100, white);
+}
+
+
+.G_LightPurpleMenu
+{
+    .BG_GAMPurple060;
+
+    .MenuTheme(@COLOR_GAM_PURPLE_060, white);
+}
+
+.G_DarkBlueMenu
+{
+    .BG_GAMBlue100Tint;
+
+    .MenuTheme(@COLOR_GAM_BLUE_100, white);
+}
+
+.G_DarkRubineMenu
+{
+    .BG_GAMRubine100Tint;
+
+    .MenuTheme(@COLOR_GAM_RUBINE_100, white);
+}
+
+.G_GoldMenu
+{
+    .BG_GAMGold100Tint;
+
+    .MenuTheme(@COLOR_GAM_GOLD_100, white);
+}
+
+.G_LightGoldMenu
+{
+    .BG_GAMGold060Tint;
+
+    .MenuTheme(@COLOR_GAM_GOLD_060, white);
+}
+
+.G_VeryLightGoldMenu
+{
+    .BG_GAMGold030Tint;
+
+    .MenuTheme(@COLOR_GAM_GOLD_030, white);
+}
+
+.G_DarkGreyMenu
+{
+    .BG_GAMGrey100Tint;
+
+    .MenuTheme(@COLOR_GAM_GREY_100, white);
+}
+
+.G_GreyMenu
+{
+    .BG_GAMGrey030;
+
+    .MenuTheme(@COLOR_GAM_GREY_030, black);
+}
+

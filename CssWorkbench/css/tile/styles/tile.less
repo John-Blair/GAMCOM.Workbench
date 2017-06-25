@@ -1,0 +1,183 @@
+@import "tile.themes.less";
+
+/****
+ *  
+ *  tile.less
+ *  =========================================================================== 
+ *
+ *  styles for tiles
+ *
+ *  classes with the prefix G_ are public styles, designed to be used by marketing to style or position their content
+ *  other classes are "internal" styles, used by the templates for scaffolding or standard formatting
+ *
+ *  note
+ *  
+ *  anything with a width or position element will likely need an override in the tile media file
+ * 
+ ****/
+
+
+.tileContainer
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+    .tileContainer:before, .tileContainer:after
+    {
+        display: table;
+        content: " ";
+    }
+
+    .tileContainer:after
+    {
+        clear: both;
+    }
+
+.tileContainer
+{
+    position: relative;
+}
+
+.tile
+{
+    position: absolute;
+    width: 247px;
+    margin: 0px 12px 12px 0px;
+    overflow: hidden;
+    height: 314px; // will be set auto in compact mode
+}
+
+.tile-wide
+{
+    width: 506px;
+}
+
+.tileContent
+{
+    margin: 10px;
+
+    a
+    {
+        font-weight: bold;
+        text-decoration: none;
+        padding: 4px 10px 4px 20px;
+        width: 197px;
+        display: inline-block;
+        // bung an arrow in the button - possibility of making it themeable in the future.
+        background-image: url(/media/1068/bullet_triangle_white.gif);
+        background-repeat: no-repeat;
+        //IE8 fix as no offset right positioning possible.
+        background-position: 5px 7px;
+        text-decoration: none;
+    }
+    /*
+        a:before
+        {
+            display: inline-block;
+            margin-right: 7px;
+            font-family: 'Courier New';
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 1);
+            content: url(/media/1068/bullet_triangle_white.gif);
+        }
+        */
+    ul
+    {
+        margin-top: 10px;
+        list-style-type: none;
+    }
+
+
+    .tileHeader
+    {
+        font-family: Arial, sans-serif;
+        //font-weight: 600;
+        font-size: 21px;
+        line-height: 1em;
+        display: block;
+        height: 60px;
+        margin: 0px;
+        overflow: hidden;
+    }
+
+    h2
+    {
+        .tileHeader;
+    }
+
+    h3
+    {
+        .tileHeader;
+        height: 30px;
+    }
+
+    // country lists for self certification or deep links
+    .selfCertList
+    {
+        // element will contain floats, so we will force it to size to its contents
+        overflow: hidden;
+        display: inline-block; /* Necessary to trigger "hasLayout" in IE */
+        display: block; /* Sets element back to block */
+        a
+        {
+            float: left;
+            margin-right: 2px;
+            width: 130px;
+        }
+        // this looks inactive, but you also have to disable stuff
+        .inactiveLink
+        {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+    // long headings get a slightly smaller font
+    .G_TileHeadingLong
+    {
+        font-size: 18px;
+        padding: 0px;
+    }
+
+    .G_TileHeadingCompressed
+    {
+        .G_TileHeadingLong;
+        line-height: 0.9em;
+    }
+    // image positioning
+    .G_ImageLeft
+    {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .G_ImageRight
+    {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    .G_ImageBackground
+    {
+        z-index: -1;
+    }
+    // tile footer
+    .G_PositionTileFooter
+    {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        text-align: right;
+
+        a
+        {
+            width: auto !important;
+        }
+    }
+}
+// import the media at the end, or else it won't override anything
+@import "tile.media.less";

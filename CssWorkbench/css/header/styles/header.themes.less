@@ -1,0 +1,359 @@
+﻿@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/color_functions.less";
+@import "../../common/colors/solid_backgrounds.less";
+@import "../../common/colors/gradient_backgrounds.less";
+
+/****
+ *  
+ *  header.themes.less
+ *  =========================================================================== 
+ *
+ *  Header themes are designed to be applied to headers in umbraco templates i.e. the "header" element.
+ *  The user can set a system wide setting to set the header theme across all pages on the website.
+ *  In addition, the user can optionally set a page level header theme to override the system setting to allow a section of pages to
+ *  have a different header theme e.g. for institutional pages.
+ *  
+ ****/
+
+// Header theme mixins
+
+// Theme links within menus - e.g. Profile Menu and Language Menu
+// These menus may use different menu item separators.
+// Minimise name clutter by avoiding using classes to target menu items - target elements instead.
+.MenuItemTheme (@p_borderStyle, @p_color)
+{
+    a
+    {
+        // Use border separation rather than background images.
+        border-left: 1px @p_borderStyle @p_color;
+        color: @p_color;
+
+        // No separator left border required for first item in the list.
+        &.firstItem
+        {
+            border-left: none;
+        }
+
+        text-decoration: none;
+
+        // Only show underline when a link is hovered over.
+        &:link, &:visited, &:active
+        {
+            text-decoration: none;
+        }
+
+        //Define hover action to avoid a tile theme override being used.
+        &:hover
+        {
+            text-decoration: underline;
+            color: @p_color;
+        }
+    }
+}
+
+// Theme navigation buttons within menus e.g. operations menu and search menu.
+.NavMenuItemTheme (@p_color, @p_background_color, @p_selected_menu_background_color) {
+    a {
+        background-color: @p_background_color;
+
+        &.menuSelected {
+            background-color: @p_selected_menu_background_color;
+        }
+
+        color: @p_color;
+        // Bung an arrow in the button - possibility of making it themeable in the future.
+        background-image: url(/media/1073/bullet_triangle_teal.gif);
+        background-repeat: no-repeat;
+        //IE8 fix as no offset right positioning possible.
+        background-position: 98% center;
+        text-decoration: none;
+
+        &:link, &:visited, &:active {
+            color: @p_color;
+            text-decoration: none;
+        }
+        // Theme independent hover action.
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    button {
+        background-color: @p_background_color;
+        color: @p_color;
+    }
+}
+
+
+.ThemeHighlight(@background) when (lightness(@background) < 70%)
+{
+    // tint white, 30%
+    @fadedColor: tint(@background, 30%);
+    .BackgroundColor(white, 0.3, @fadedColor);
+}
+
+// called by the .tileTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// lighter colours get a darker style of highlight
+
+.ThemeHighlight(@background) when (lightness(@background) >= 70%)
+{
+    // shade black, 20%
+    @fadedColor: shade(@background, 20%);
+    .BackgroundColor(black, 0.2, @fadedColor);
+}
+
+// the subheading is a light version of the background
+// proper browsers do this by using a highly transparent version of the text
+
+.ThemeSubheadingColor(@color, @background)
+{
+    @fadedColor: tint(@background, 60%);
+    .Color(@color, 0.6, @fadedColor);
+}
+
+
+
+// Re-use tile theme.
+.TileTheme(@background, @color)
+{
+    .Color(@color, .95, @color);
+
+    h2
+    {
+        .BorderBottom(@color, .50, @color);
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .ThemeSubheadingColor(white, @background);
+    }
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+        .G_SubHeadingTextColor;
+    }
+
+    .G_Highlight
+    {
+        .ThemeHighlight(@background);
+    }
+
+    .G_Alert
+    {
+        .ThemeHighlight(@background);
+        padding: 15px;
+        font-weight: bold;
+        height: 195px;
+    }
+
+    .G_ListSeparator
+    {
+        // used when creating a division between li which are part of a <ul class="G_Highlight">
+        border-bottom: 1px dotted black;
+    }
+
+    a
+    {
+        color: white;
+    }
+
+        a:hover
+        {
+            // reuse subhead color for hover
+            .ThemeSubheadingColor(@color, @background);
+        }
+
+}
+
+
+
+
+// The themeable items in the header are:
+//     1) The foregoround color of the menu items text : this is the background colour of the tile.
+//     2) The background color of the buttons within the banner - expect a flat color
+//     3) The background colour of the nav bar - handled outside of this mixin as it is defined by a gradient class rather than a colour
+//        and no way of using this as a parameter and using it in the mixin.
+//     4) The menu border separators 
+// Items with a fixed color are: 
+//     1) Link hovers : white
+//     2) input element background color: white
+.HeaderTheme(@p_color, @p_backgroundButtonColor, @p_selected_menu_background_color) {
+    .Color(@p_color, .95, @p_color);
+    // Theme each menu in the header.
+    .profileMenu {
+        .MenuItemTheme(dashed,@p_color);
+    }
+
+    .languageMenu {
+        .MenuItemTheme(solid,@p_color);
+    }
+
+    .operationsMenu, .searchMenu {
+        .NavMenuItemTheme(@p_color, @p_backgroundButtonColor, @p_selected_menu_background_color);
+        // Potential for making search icon themable.
+        button.basicSearchButton {
+            background-image: url(/media/1074/search.png);
+            background-repeat: no-repeat;
+            //IE8 fix as no offset right positioning possible.
+            background-position: 98% center;
+        }
+    }
+    // Theme independent : Keep the white background on all header input elements
+    input {
+        background-color: white;
+        color: @p_color;
+    }
+    // Bold the current selection in a list.
+    .currentItem {
+        font-weight: bold;
+    }
+    // BASE TITLE SETTINGS:
+    // Set the default tile settings for use with the transparent menu tile i.e.  G_TransparentMenuTile
+    // These will be overriden when a specific tile theme is selected in the header.
+    .G_TransparentMenuTile 
+    {
+        .TileTheme(@p_color, white);
+    }
+}
+
+/****
+ *  
+ *  HEADER THEMES
+ *  =========================================================================== 
+ *
+ *  These are the public classes which can be applied at the site setting level or page level.
+ *  This list should be very similar to the tile themes.
+ *  TBD: Possibility of multi-coloured themese e.g. G_BlackPurpleHeader for a black background, and purple foreground.
+ * 
+ *  3 colours are required for each header theme
+ *      1)  Foreground colour of text
+ *      2)  Background colour of buttons.
+ *      3)  Background colour of the navigation bar - expect this to be a gradient colour.
+ ****/
+
+
+.G_GreenHeader {
+
+    // Foreground colour of text
+    // Background colour of buttons.
+    .HeaderTheme(@COLOR_GAM_GREEN_100, @COLOR_GAM_GREEN_030, @COLOR_GAM_GREEN_060);
+
+    //Background colour of the navigation bar
+    .bottomMenu, .dynamicMenu 
+    {
+        .BG_GAMGreen100Tint;
+    }
+}
+
+.G_BlackHeader
+{
+     .HeaderTheme(black, @COLOR_GAM_GREY_030, @COLOR_GAM_GREY_060);
+
+    //Background colour of the navigation bar
+    .bottomMenu , .dynamicMenu 
+    {
+       background-color: black;
+    }
+
+}
+
+
+.G_BlueHeader
+{
+    .HeaderTheme(@COLOR_GAM_BLUE_100, @COLOR_GAM_BLUE_030, @COLOR_GAM_BLUE_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMBlue100Tint;
+    }
+
+}
+
+
+.G_GreyHeader
+{
+    .HeaderTheme(@COLOR_GAM_GREY_100, @COLOR_GAM_GREY_030, @COLOR_GAM_GREY_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMGrey100Tint;
+    }
+}
+
+
+.G_MustardHeader
+{
+    .HeaderTheme(@COLOR_GAM_MUSTARD_100, @COLOR_GAM_MUSTARD_030, @COLOR_GAM_MUSTARD_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMMustard100Tint;
+    }
+}
+
+
+.G_OliveHeader
+{
+    .HeaderTheme(@COLOR_GAM_OLIVE_100, @COLOR_GAM_OLIVE_030, @COLOR_GAM_OLIVE_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMOlive100Tint;
+    }
+}
+
+.G_RubineHeader
+{
+    .HeaderTheme(@COLOR_GAM_RUBINE_100, @COLOR_GAM_RUBINE_030, @COLOR_GAM_RUBINE_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMRubine100Tint;
+    }
+}
+
+
+.G_OrangeHeader
+{
+    .HeaderTheme(@COLOR_GAM_ORANGE_100, @COLOR_GAM_ORANGE_030, @COLOR_GAM_ORANGE_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMOrange100Tint;
+    }
+}
+
+
+.G_GoldHeader
+{
+    .HeaderTheme(@COLOR_GAM_GOLD_100, @COLOR_GAM_GOLD_030, @COLOR_GAM_GOLD_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMGold100Tint;
+    }
+}
+
+.G_PurpleHeader
+{
+    .HeaderTheme(@COLOR_GAM_PURPLE_100, @COLOR_GAM_PURPLE_030, @COLOR_GAM_PURPLE_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMPurple100Tint;
+    }
+}
+
+.G_AquaHeader
+{
+    .HeaderTheme(@COLOR_GAM_AQUA_100, @COLOR_GAM_AQUA_030, @COLOR_GAM_AQUA_060);
+
+    .bottomMenu , .dynamicMenu 
+    {
+        .BG_GAMAqua100Tint;
+    }
+}

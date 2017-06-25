@@ -1,0 +1,90 @@
+﻿@import "../common/colors/color_definitions.less";
+@import "../common/colors/gradient_backgrounds.less";
+/****
+ *  
+ *  chooseprofile.less
+ *  =========================================================================== 
+ *
+ *  Styles for 2 forms:
+ *      choose profile: Uses the tile theme for color definitions.
+ *      change profile (header link) : Uses the dialog theme for color definitions.
+ *
+ ****/
+
+form.chooseProfile {
+
+    hidden 
+    {
+        display: none;
+    }
+
+    // Exception: not defined by tile theme.
+    a.smallButton {
+        background-image: url(/media/1068/bullet_triangle_white.gif);
+        background-repeat: no-repeat;
+        background-position: 90% center;
+        text-decoration: none;
+        height: 14px;
+        margin-left: 10px;
+        width: 40px;
+    }
+
+    // Override themes bunging a background image in.
+    a:before {
+        content: "";
+    }
+
+    a#chooseProfileSubmitButton {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        float: right;
+    }
+
+    select {
+       width: 100%;
+        height: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    // Exception: not defined by tile theme.
+    .G_Error {
+         color: red;
+         width: 100%;
+    }
+}
+
+
+// Change Profile popup dialog - dialog themes used - so no colour usage here.
+
+#changeProfileDialog {
+    
+
+    form.changeProfile {
+
+        hidden {
+            display: none;
+        }
+
+        a.G_Button {
+            height: 14px;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 90px;
+            padding: 4px 10px 4px 10px;
+            float: right;
+        }
+
+        select {
+            width: 100%;
+            height: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .G_Error {
+            width: 100%;
+        }
+    }
+}

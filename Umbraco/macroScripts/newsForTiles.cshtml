@@ -1,0 +1,83 @@
+﻿@using umbraco.MacroEngines
+@using Umbraco.Core
+@using Umbraco.Core.Models
+@using Umbraco.Core.Services
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    /****
+         * 
+         * SCRIPT               [>] newsForTiles
+         *                      [ ] 
+         * -----------------------------------------------------------------------------------------------
+         * 
+         * PARAMETERS        
+         *      nodeId            [string] used to locate the root of target news items
+         * 
+         * NOTES
+         *      
+         * 
+         ****/
+
+
+    // initialise
+
+    DynamicNode contentNode = null;
+    contentNode = Model.NodeById(Parameter.picked);
+    int itemCount = 0;
+
+    if (contentNode != null)
+    {
+
+        // julian date
+        var articles = contentNode.Descendants("NewsArticle").OrderByDescending(x => String.Format("{0:s}", x.SafeProperty("PublishedDate")));
+
+        <ul class="newsArticleSummaryList">
+            @foreach (DynamicNode eachArticle in articles)
+            {
+                if (eachArticle.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+                {
+                    
+                    // the short title overrides the name of the article
+                    var title = eachArticle.SafeProperty("shortTitle");
+                    if (string.IsNullOrEmpty(title))
+                    {
+                        title = eachArticle.Name;    
+                    }
+
+                    // article url
+                    var targetNodeId = eachArticle.SafeProperty("Page");
+                    DynamicNode targetPage = null;
+                    if (!string.IsNullOrEmpty(targetNodeId))
+                    {
+                        targetPage  = new DynamicNode(targetNodeId);
+                    }
+                    
+                    if (targetPage != null)
+                    {
+                        <li><a href="@targetPage.Url">@title</a></li>
+                    }
+                    else
+                    { 
+                        <li><a href="#">@title</a></li>
+                    }
+
+                    
+                    <li class="G_SubHeadingTextColor precis">@eachArticle.SafeProperty("precis")</li>
+                    if (++itemCount >= 3) 
+                    {
+                        break;
+                    }
+                }
+                
+            }
+        </ul>                
+    
+    }
+    
+ }
+
+
+
+

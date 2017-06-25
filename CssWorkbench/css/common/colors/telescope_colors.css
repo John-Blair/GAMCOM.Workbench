@@ -1,0 +1,27 @@
+.BG_TelescopeBrown100Tint {
+  background: #543715;
+  background: -moz-linear-gradient(-45deg, #543715 0%, #543715 1%, #915f24 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #543715), color-stop(1%, #543715), color-stop(100%, #915f24));
+  background: -webkit-linear-gradient(-45deg, #543715 0%, #543715 1%, #915f24 100%);
+  background: -o-linear-gradient(-45deg, #543715 0%, #543715 1%, #915f24 100%);
+  background: -ms-linear-gradient(-45deg, #543715 0%, #543715 1%, #915f24 100%);
+  background: linear-gradient(to bottom right, #543715, #915f24);
+}
+.BG_TelescopeGreen100Tint {
+  background: #425a06;
+  background: -moz-linear-gradient(-45deg, #425a06 0%, #425a06 1%, #77a20b 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #425a06), color-stop(1%, #425a06), color-stop(100%, #77a20b));
+  background: -webkit-linear-gradient(-45deg, #425a06 0%, #425a06 1%, #77a20b 100%);
+  background: -o-linear-gradient(-45deg, #425a06 0%, #425a06 1%, #77a20b 100%);
+  background: -ms-linear-gradient(-45deg, #425a06 0%, #425a06 1%, #77a20b 100%);
+  background: linear-gradient(to bottom right, #425a06, #77a20b);
+}
+.BG_TelescopeYellow100Tint {
+  background: #d79a57;
+  background: -moz-linear-gradient(-45deg, #d79a57 0%, #d79a57 1%, #dca66c 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #d79a57), color-stop(1%, #d79a57), color-stop(100%, #dca66c));
+  background: -webkit-linear-gradient(-45deg, #d79a57 0%, #d79a57 1%, #dca66c 100%);
+  background: -o-linear-gradient(-45deg, #d79a57 0%, #d79a57 1%, #dca66c 100%);
+  background: -ms-linear-gradient(-45deg, #d79a57 0%, #d79a57 1%, #dca66c 100%);
+  background: linear-gradient(to bottom right, #d79a57, #dca66c);
+}

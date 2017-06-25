@@ -1,0 +1,56 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] MenuTiles
+    *                      [ ] composes (complied!) tile document types
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    *      none
+    * 
+    * NOTES
+    * 
+    *   The basic tile structure is as follows
+    *       <div data-priority="00" class="tile"><div class="tileContent">tile context</div></div>
+    *       
+    *   If the tile is marked as wide the "tile-wide" style is applied.
+    *   User styles are also added (via otherStyles).
+    * 
+    *   If the tile CONTENT contains embedded macros, we expand those.
+    * 
+    ****/
+
+    DynamicNode currentPage = Model;
+    var menuRootNodeId = currentPage.SafeProperty("productMenuCollection");
+
+    if (string.IsNullOrEmpty(menuRootNodeId))
+    {
+        // No menu defined on the current node so use the default global menu.
+        menuRootNodeId = WebConfigFacade.DefaultProductMenuCollection;
+    }
+    
+    var menuRootNode = Model.NodeById(menuRootNodeId);
+
+    var tiles = menuRootNode.Children.Where("NodeTypeAlias == \"Tile\" ");
+    var tileIdx = 0;       
+
+    foreach (DynamicNode eachTile in tiles)
+    {
+        var column = tileIdx % 4;
+        
+        if (eachTile.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+        {
+            var otherStyles = eachTile.SafeProperty("styles");
+            var wideStyle = eachTile.IfSafePropertyMatch("wideTile", "1") ? "tile-wide" : "";
+            var tileContent = eachTile.SafeProperty("tileContent");
+    <div data-priority="@String.Format("{0:00}", tileIdx++)" class="menuTile @wideStyle @otherStyles  @String.Format("menuCol{0}", column) ">
+        <div class="tileContent">@Html.Raw(ContentFacade.ExpandEmbeddedMacros(@tileContent, eachTile.Id))</div>
+    </div>
+        }
+    }
+}

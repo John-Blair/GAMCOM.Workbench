@@ -1,0 +1,1 @@
+icacls e:\umbraco /grant "IIS APPPOOL\Umbraco":(OI)(CI)M

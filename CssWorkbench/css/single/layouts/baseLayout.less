@@ -1,0 +1,139 @@
+/****
+ *  
+ *  commonLayout.css
+ *  =========================================================================== 
+ *
+ *  common layout elements, things that apply to most of the pages 
+ * 
+ *
+ ****/
+ 
+ // LESS : variables
+
+	@page_width : 961px;		// the width of the viewable content block
+
+// LESS : mix-in styles
+ 
+ /**
+	this container style designates two behaviours
+	[1] that it will always form an outer boundary for any elements it contains
+	[2] (in IE) that the any text within the container will not have its aliasing corrupted by filters
+
+	overflow: hidden 
+	forces all browsers to honour the height of any elements floated within the section
+	if you remove this, Chrome will render the container with zero height (and therefore no styles)
+
+	position: relative;
+	for IE, resets the context of the container so that any filters (eg. shadows) do not corrupt the aliasing of 
+	text within the container
+
+  */
+
+	.container
+	{
+		overflow: hidden;
+		position: relative;
+	}
+ 
+
+	// Stop truncating text at the bottom of columns.
+	.expandableContainer
+	{
+		overflow-x:hidden;
+		overflow-y: auto;
+		position: relative;
+	}
+	
+
+ .single {
+
+/*defines a fixed width box, aligned in the centre of the browser */
+	#page, #logo
+	{   
+		width: @page_width;       
+        margin:0px auto;    
+    }
+
+	.logoLeft  { float: left;  }
+	.logoRight { float: right; }
+
+/* banner */
+
+    header#banner
+    {
+        height: 60px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    header#banner > #logo
+    {
+        padding-top: 10px;
+        height: 32px;
+    }
+
+
+/* main content frame */
+
+	section#page
+	{
+		.expandableContainer;
+	}
+
+/* page navigation */
+
+    nav#pageNavigation
+    {
+        width: 196px;
+        height: 587px;
+        float:left;
+		position: relative;
+    }
+
+    nav#pageNavigation > a
+    {
+	    display: block;
+        width: 145px;
+        height: 16px;
+		margin-left: 25px;
+		&:first-child {padding-top:40px;} 
+    }
+
+// a clickable button inset on the navigation image
+
+	#insetLink
+	{
+		position: absolute;
+		top: 426px;
+		left: 15px;
+		height: 70px;
+		width: 170px;
+		background-color: transparent;
+		text-decoration: none;
+	}
+
+/* video menu */
+
+    menu#videoMenu
+    {
+        width: 100%;
+    }
+
+    menu#videoMenu > a
+    {
+        display: block;
+    }
+
+
+/* page content containers */
+
+    section#pageContent
+    {
+		.expandableContainer;
+        min-height: 587px;
+        padding-left: 30px;
+        width: 700px;
+        float: left;
+    }
+
+} // .singleFund	

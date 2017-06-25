@@ -1,0 +1,121 @@
+/****
+ *  
+ *  homepageLayout.css
+ *  =========================================================================== 
+ *
+ *  layout for template "microsite: homepage"
+ *
+ ****/
+/****
+ *  
+ *  commonLayout.css
+ *  =========================================================================== 
+ *
+ *  common layout elements, things that apply to most of the pages 
+ * 
+ *
+ ****/
+/**
+	this container style designates two behaviours
+	[1] that it will always form an outer boundary for any elements it contains
+	[2] (in IE) that the any text within the container will not have its aliasing corrupted by filters
+
+	overflow: hidden 
+	forces all browsers to honour the height of any elements floated within the section
+	if you remove this, Chrome will render the container with zero height (and therefore no styles)
+
+	position: relative;
+	for IE, resets the context of the container so that any filters (eg. shadows) do not corrupt the aliasing of 
+	text within the container
+
+  */
+.container {
+  overflow: hidden;
+  position: relative;
+}
+.expandableContainer {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.single {
+  /*defines a fixed width box, aligned in the centre of the browser */
+
+  /* banner */
+
+  /* main content frame */
+
+  /* page navigation */
+
+  /* video menu */
+
+  /* page content containers */
+
+}
+.single #page,
+.single #logo {
+  width: 961px;
+  margin: 0px auto;
+}
+.single .logoLeft {
+  float: left;
+}
+.single .logoRight {
+  float: right;
+}
+.single header#banner {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.single header#banner > #logo {
+  padding-top: 10px;
+  height: 32px;
+}
+.single section#page {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.single nav#pageNavigation {
+  width: 196px;
+  height: 587px;
+  float: left;
+  position: relative;
+}
+.single nav#pageNavigation > a {
+  display: block;
+  width: 145px;
+  height: 16px;
+  margin-left: 25px;
+}
+.single nav#pageNavigation > a:first-child {
+  padding-top: 40px;
+}
+.single #insetLink {
+  position: absolute;
+  top: 426px;
+  left: 15px;
+  height: 70px;
+  width: 170px;
+  background-color: transparent;
+  text-decoration: none;
+}
+.single menu#videoMenu {
+  width: 100%;
+}
+.single menu#videoMenu > a {
+  display: block;
+}
+.single section#pageContent {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  min-height: 587px;
+  padding-left: 30px;
+  width: 700px;
+  float: left;
+}
+.single .homepageLayout section#columnOne {
+  padding-top: 22px;
+}

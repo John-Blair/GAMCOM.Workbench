@@ -1,0 +1,30 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] languageLink
+    *                      [ ] 
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    * 
+    * NOTES
+    *       
+    *   Create the language links in the page header
+    * 
+    ****/
+    
+    
+    <menu class="languageMenu">
+        <a href="@LanguageFacade.EnglishUrl" class=" firstItem @LanguageFacade.SelectEnglishIfCurrent">EN</a>
+        <a  href="@LanguageFacade.GermanUrl" class="@LanguageFacade.SelectGermanIfCurrent">DE</a>
+    </menu>
+  
+    
+}
+
+

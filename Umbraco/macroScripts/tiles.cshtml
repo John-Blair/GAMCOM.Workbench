@@ -1,0 +1,42 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    
+    /**** 
+    * 
+    * SCRIPT               [>] tiles
+    *                      [ ] composes (complied!) tile document types
+    * -----------------------------------------------------------------------------------------------
+    * 
+    * PARAMETERS        
+    *      none
+    * 
+    * NOTES
+    * 
+    *   The basic tile structure is as follows
+    *       <div data-priority="00" class="tile"><div class="tileContent">tile context</div></div>
+    *       
+    *   If the tile is marked as wide the "tile-wide" style is applied.
+    *   User styles are also added (via otherStyles).
+    * 
+    *   If the tile CONTENT contains embedded macros, we expand those.
+    * 
+    ****/
+
+    var tiles = Model.Children.Where("NodeTypeAlias == \"Tile\" ");
+    var tileIdx = 0;       
+
+    foreach (DynamicNode eachTile in tiles)
+    {
+        if (eachTile.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+        {
+            var otherStyles = eachTile.SafeProperty("styles");
+            var wideStyle = eachTile.IfSafePropertyMatch("wideTile", "1") ? "tile-wide" : "";
+            var tileContent = eachTile.SafeProperty("tileContent");
+            <div data-priority="@String.Format("{0:00}", tileIdx++)" class="tile @wideStyle @otherStyles"><div class="tileContent">@Html.Raw(ContentFacade.ExpandEmbeddedMacros(@tileContent, eachTile.Id))</div></div>
+        }
+    }
+}

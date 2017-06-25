@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Viewport Size</title>
+    <script src="../scripts/lib/jQuery/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div id="viewport"></div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(window).resize(function () {
+            $('#viewport').empty().append($(window).width(), "x", $(window).height(), "y")
+        }).resize(); 
+    });
+
+</script>
+</body>
+</html>

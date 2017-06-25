@@ -1,0 +1,439 @@
+@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/color_functions.less";
+@import "../../common/colors/solid_backgrounds.less";
+@import "../../common/colors/gradient_backgrounds.less";
+@import "../../common/colors/telescope_colors.less";
+
+/****
+ *  
+ *  tile.themes.less
+ *  =========================================================================== 
+ *
+ *  tile themes are designed to be applied to tiles in umbraco, they allow the user to work with more
+ *  abstracted descriptions, rather than force them to hand-roll backgrounds, foregrounds, etc
+ * 
+ *  old theme names (experiment with a different type of abstraction)
+ *  FeatureTile, FundTile, NavigationTile, NewsTile, MediaTile, InformationTile, MarketingTile, SectionTile
+ *  
+ * 
+ *  
+ *  
+ *  
+ 
+ ****/
+
+/****
+ *  
+ *  TILE MIXIN FUNCIONS
+ *  =========================================================================== 
+ *
+ *  The following functions allow a tile theme to be mostly generated with a few parameters.
+ *  However where customisation is required, the theme can override what the basic mixins create.
+ *  The LightImageTile is an example where this happens.
+ * 
+ ****/
+
+
+// called by the .tileTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// darker colours get a lighter style of highlight
+
+.ThemeHighlight(@background) when (lightness(@background) < 70%)
+{
+    // tint white, 30%
+    @fadedColor: tint(@background, 30%);
+    .BackgroundColor(white, 0.3, @fadedColor);
+}
+
+// called by the .tileTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// lighter colours get a darker style of highlight
+
+.ThemeHighlight(@background) when (lightness(@background) >= 70%)
+{
+    // shade black, 20%
+    @fadedColor: shade(@background, 20%);
+    .BackgroundColor(black, 0.2, @fadedColor);
+}
+
+// the subheading is a light version of the background
+// proper browsers do this by using a highly transparent version of the text
+
+.ThemeSubheadingColor(@color, @background)
+{
+    @fadedColor: tint(@background, 60%);
+    .Color(@color, 0.6, @fadedColor);
+}
+
+.ThemeInactiveLinkColor(@color, @background)
+{
+    @fadedColor: tint(@background, 30%);
+    .Color(@color, 0.3, @fadedColor);
+}
+
+// tileTheme brings everything together to create a tile theme
+
+.TileTheme(@background, @color, @link)
+{
+    .Color(@color, .95, @color);
+
+    h2
+    {
+        .BorderBottom(@color, .50, @color);
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .ThemeSubheadingColor(white, @background);
+    }
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+        .G_SubHeadingTextColor;
+    }
+
+    .G_Highlight
+    {
+        .ThemeHighlight(@background);
+    }
+
+    .G_Alert
+    {
+        .ThemeHighlight(@background);
+        padding: 15px;
+        font-weight: bold;
+        height: 195px;
+    }
+
+    .G_ListSeparator
+    {
+        // used when creating a division between li which are part of a <ul class="G_Highlight">
+        border-bottom: 1px dotted black;
+    }
+
+    a
+    {
+        color: white;
+    }
+
+        a:hover
+        {
+            // reuse subhead color for hover
+            .ThemeSubheadingColor(@color, @background);
+        }
+
+    .inactiveLink
+    {
+        .ThemeInactiveLinkColor(@color, @background);
+    }
+
+    .newsArticleSummaryList
+    {
+        a
+        {
+        }
+
+            a:hover
+            {
+            }
+    }
+}
+
+
+
+// Define the foreground colours for Tile elements - leaving the backgroud elements to be set by the container header theme. 
+.TransparentTileTheme(@color, @link)
+{
+    .Color(@color, .95, @color);
+
+    h2
+    {
+        .BorderBottom(@color, .50, @color);
+    }
+
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+       .Color(@color, 0.6,@color);
+    }
+
+   
+    .G_ListSeparator
+    {
+        // used when creating a division between li which are part of a <ul class="G_Highlight">
+        border-bottom: 1px dotted black;
+    }
+
+    a
+    {
+        color: white;
+    }
+
+}
+
+/****
+ *  
+ *  TILE THEMES
+ *  =========================================================================== 
+ *
+ *  These are the public classes which can be applied to a tile.
+ * 
+ ****/
+
+
+.G_GreenTile
+{
+    .BG_GAMGreen100Tint;
+    .TileTheme(@COLOR_GAM_GREEN_100, white, white);
+}
+
+.G_BlackTile
+{
+    background-color: black;
+    .TileTheme(black, white, white);
+}
+
+.G_DarkPurpleTile
+{
+    .BG_GAMPurple100Tint;
+    .TileTheme(@COLOR_GAM_PURPLE_100, white, white);
+}
+
+.G_TriadGreenTile
+{
+    .BG_TriadGreen100Tint;
+    .TileTheme(@COLOR_TRIAD_GREEN_100, white, white);
+}
+
+
+.G_TriadDarkGreenTile
+{
+    .BG_TriadDarkGreenTint;
+    .TileTheme(@COLOR_TRIAD_GREEN_DARK, white, white);
+}
+
+
+.G_LightPurpleTile
+{
+    .BG_GAMPurple060;
+    .TileTheme(@COLOR_GAM_PURPLE_060, white, white);
+}
+
+.G_DarkBlueTile
+{
+    .BG_GAMBlue100Tint;
+    .TileTheme(@COLOR_GAM_BLUE_100, white, white);
+}
+
+.G_DarkRubineTile
+{
+    .BG_GAMRubine100;
+    .BG_GAMRubine100Tint;
+    .TileTheme(@COLOR_GAM_RUBINE_100, white, white);
+}
+
+.G_GoldTile
+{
+    .BG_GAMGold100Tint;
+    .TileTheme(@COLOR_GAM_GOLD_100, white, white);
+}
+
+.G_LightGoldTile
+{
+    .BG_GAMGold060Tint;
+    .TileTheme(@COLOR_GAM_GOLD_060, white, white);
+}
+
+.G_VeryLightGoldTile
+{
+    .BG_GAMGold030Tint;
+    .TileTheme(@COLOR_GAM_GOLD_030, white, white);
+}
+
+.G_DarkGreyTile
+{
+    .BG_GAMGrey100Tint;
+    .TileTheme(@COLOR_GAM_GREY_100, white, white);
+}
+
+.G_MidDarkGreyTile
+{
+    .BG_GAMGrey080Tint;
+    .TileTheme(@COLOR_GAM_GREY_090, black, white);
+
+    h2
+    {
+        color: shade(@COLOR_GAM_GREY_100, 20%);
+    }
+
+}
+
+.G_GreyTile
+{
+    .BG_GAMGrey030;
+    .TileTheme(@COLOR_GAM_GREY_030, black, white);
+
+    h2
+    {
+        color: @COLOR_GAM_GREEN_100;
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .Color(@COLOR_GAM_GREY_100, 60%, @COLOR_GAM_GREY_100);
+    }
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+        .G_SubHeadingTextColor;
+    }
+}
+
+.G_LightGreyTile
+{
+    background-color: tint(@COLOR_GAM_GREY_030, 70%);
+    .TileTheme(@COLOR_GAM_GREY_030, darkgray, white);
+
+    h2
+    {
+        color: @COLOR_GAM_GREEN_100;
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .Color(@COLOR_GAM_GREY_100, 60%, @COLOR_GAM_GREY_100);
+    }
+
+    .G_SubHeading
+    {
+        display: block;
+        line-height: 17px;
+        .G_SubHeadingTextColor;
+    }
+}
+
+.G_TelescopeYellow
+{
+    .BG_TelescopeYellow100Tint;
+    .TileTheme(@COLOR_TELESCOPE_YELLOW_100, white, white);
+}
+
+.G_TelescopeGreen
+{
+    .BG_TelescopeGreen100Tint;
+    .TileTheme(@COLOR_TELESCOPE_GREEN_100, white, white);
+}
+
+.G_TelescopeBrown
+{
+    .BG_TelescopeBrown100Tint;
+    .TileTheme(@COLOR_TELESCOPE_BROWN_100, white, white);
+}
+
+.G_LightImageTile
+{
+    .TileTheme(@COLOR_GAM_GREY_030, white, white);
+
+    .G_Highlight
+    {
+        background: rgba(0, 0, 128, 0.3);
+    }
+
+    h1
+    {
+        display: block;
+        position: absolute;
+        margin: 0px;
+        top: 0px;
+        left: 0px;
+        width: 506px;
+        height: 55px;
+        padding: 8px;
+        // tweaked for image match
+        .Color(white, .95, #FFFCEB);
+        // ie fallback, no color
+        background-color: rgba(0,0,128,0.3);
+        .BorderBottom(white, .50, white);
+        font-family: Arial, sans-serif;
+        font-size: 32px;
+        line-height: 24px;
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .Color(white, .60, #F8E5BB);
+    }
+
+    .G_SubHeading
+    {
+        .G_SubHeadingTextColor;
+    }
+}
+
+.G_LightImageTileDarkHeader
+{
+    .G_LightImageTile;
+
+    h1
+    {
+        background-color: rgba(0,0,128,0.5);
+    }
+}
+
+
+.G_LightImageTileLargeHeader
+{
+    .G_LightImageTile;
+
+    h1
+    {
+        height: 100px;
+    }
+
+    .G_SubHeading
+    {
+        line-height: 25px;
+    }
+}
+
+
+
+.G_TransparentImageTile
+{
+    .TileTheme(@COLOR_GAM_GREY_030, white, white);
+
+    h1
+    {
+        display: block;
+        position: absolute;
+        margin: 0px;
+        top: 0px;
+        left: 0px;
+        width: 506px;
+        height: 55px;
+        padding: 8px;
+        font-family: Arial, sans-serif;
+        font-size: 32px;
+        line-height: 24px;
+    }
+
+    .G_SubHeadingTextColor
+    {
+        .Color(white, .60, white);
+    }
+
+    .G_SubHeading
+    {
+        .G_SubHeadingTextColor;
+    }
+}
+
+
+
+

@@ -1,0 +1,12 @@
+/****
+ *  
+ *  admin.less
+ *  =========================================================================== 
+ *
+ *  custom reset values, more suited to our preferences
+ *  overrises the things normalise didn't quite get right for us
+ *
+ ****/
+table.fundTaxonomyTable tr:nth-child(odd) {
+  background-color: lavender;
+}

@@ -1,0 +1,67 @@
+/****
+ *  
+ *  fundRange.css
+ *  =========================================================================== 
+ *
+ *  the fund range is generated html which conforms to the structures required 
+ *  for spry tabs and panels 
+ *
+ *
+ ****/
+.container {
+  overflow: hidden;
+  position: relative;
+}
+.fundrange-text-highlight {
+  font-weight: bold;
+  color: #66A3A3;
+}
+.fundrange-tab-title {
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+}
+.fundrange-fund {
+  overflow: hidden;
+  position: relative;
+  padding: 2px;
+  border-bottom: solid 1px #B2D1D1;
+  border-left: solid 1px #B2D1D1;
+  border-right: solid 1px #B2D1D1;
+}
+.fundrange-fund a {
+  text-decoration: none;
+}
+.fundrange-fund a:hover {
+  text-decoration: underline;
+}
+.fundrange-fund .fundrange-fund-text {
+  padding: 0px;
+  margin: 0px;
+  color: black;
+  display: block;
+  font-weight: normal;
+  line-height: 14px;
+}
+.fundrange-fund .fundrange-fund-title {
+  font-weight: bold;
+  color: #66A3A3;
+  font-size: 14px;
+  padding: 6px 0px 6px 0px;
+}
+.fundrange-fund .fundrange-fund-data {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.fundrange-fund .fundrange-fund-detail-link {
+  font-weight: bold;
+  color: #66A3A3;
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+.fundrange-fund .fundrange-fund-image {
+  float: left;
+}

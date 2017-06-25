@@ -1,0 +1,26 @@
+/****
+ *  
+ *  commonStyles.css
+ *  =========================================================================== 
+ * 
+ *	generate box shadows 
+ *  http://css3gen.com/box-shadow/
+ * 
+ ****/
+
+ // LESS : variables
+
+	@colour_gam_green: #066; 
+	@colour_standard_background: #ebebeb;
+
+  .shadowedBlock
+	{
+		// css 3 shadows
+		-webkit-box-shadow: 5px 5px 10px rgba(50, 50, 50, 0.47);
+		-moz-box-shadow:    5px 5px 10px rgba(50, 50, 50, 0.47);
+		box-shadow:         5px 5px 10px rgba(50, 50, 50, 0.47);
+		// for explorer
+		filter: progid:DXImageTransform.Microsoft.Shadow(color=#aaaaaa,direction=135,strength=5); 
+	}
+
+ 

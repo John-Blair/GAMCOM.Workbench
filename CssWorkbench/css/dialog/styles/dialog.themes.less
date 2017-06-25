@@ -1,0 +1,242 @@
+@import "../../common/colors/color_definitions.less";
+@import "../../common/colors/color_functions.less";
+@import "../../common/colors/solid_backgrounds.less";
+@import "../../common/colors/gradient_backgrounds.less";
+
+/****
+ *  
+ *  dialog.themes.less
+ *  =========================================================================== 
+ *
+ *  dialog themes are designed to be applied to dialogs in umbraco, they allow the user to work with more
+ *  abstracted descriptions, rather than force them to hand-roll backgrounds, foregrounds, etc
+ * 
+ 
+ ****/
+
+/****
+ *  
+ *  DIALOG MIXIN FUNCIONS
+ *  =========================================================================== 
+ *
+ *  The following functions allow a dialog theme to be mostly generated with a few parameters.
+ *
+ ****/
+
+
+// called by the .DialogTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// darker colours get a lighter style of highlight
+
+.DialogHighlight(@background) when (lightness(@background) < 70%)
+{
+    // tint white, 30%
+    @fadedColor: tint(@background, 30%);
+    .BackgroundColor(white, 0.3, @fadedColor);
+}
+
+// called by the .DialogTheme mixin to define the .Highlight class
+// uses the background colour of the theme to guess how to generate the hightlight value
+// lighter colours get a darker style of highlight
+
+.DialogHighlight(@background) when (lightness(@background) >= 70%)
+{
+    // shade black, 20%
+    @fadedColor: shade(@background, 20%);
+    .BackgroundColor(black, 0.2, @fadedColor);
+}
+
+// the subheading is a light version of the background
+// proper browsers do this by using a highly transparent version of the text
+
+.DialogSubheadingColor(@color, @background)
+{
+    @fadedColor: tint(@background, 60%);
+    .Color(@color, 0.6, @fadedColor);
+}
+
+
+
+// DialogTheme brings everything together to create a Dialog theme
+
+.DialogTheme(@background, @color) {
+    
+    .Color(@color, .95, @color);
+
+    h2 {
+        .BorderBottom(@color, .50, @color);
+    }
+
+    .G_Highlight {
+        .DialogHighlight(@background);
+    }
+
+    .G_SubHeadingTextColor {
+        .DialogSubheadingColor(white, @background);
+    }
+
+    .G_SubHeading {
+        display: block;
+        
+        // TBD: Structure?
+        line-height: 17px;
+        
+        .G_SubHeadingTextColor;
+    }
+
+     a {
+        color: white;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+      a.G_Button {
+            background-image: url(/media/1068/bullet_triangle_white.gif);
+            background-repeat: no-repeat;
+            background-position: 90% center;
+            text-decoration: none;
+     }
+
+
+    .G_Proceed
+    {
+        background-color: @COLOR_GAM_GOLD_100;
+    }
+
+    .G_Error
+    {
+        color: red;
+    }
+}
+
+
+/****
+ *  
+ *  DIALOG THEMES
+ *  =========================================================================== 
+ *
+ *  These are the public classes which can be applied to a dialog.
+ * 
+ ****/
+
+
+.G_GreenDialog
+{
+    .BG_GAMGreen100Tint;
+
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGreen100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_GREEN_100, white);
+}
+
+.G_BlackDialog
+{
+    background-color: black;
+
+     &.ui-dialog-content.ui-widget-content{
+        background-color: black;
+    }
+
+    .DialogTheme(black, white);
+}
+
+.G_DarkPurpleDialog
+{
+    .BG_GAMPurple100Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMPurple100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_PURPLE_100, white);
+}
+
+
+.G_LightPurpleDialog
+{
+    .BG_GAMPurple060;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMPurple060;
+    }
+
+    .DialogTheme(@COLOR_GAM_PURPLE_060, white);
+}
+
+.G_DarkBlueDialog
+{
+    .BG_GAMBlue100Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMBlue100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_BLUE_100, white);
+}
+
+.G_DarkRubineDialog
+{
+    .BG_GAMRubine100Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMRubine100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_RUBINE_100, white);
+}
+
+.G_GoldDialog
+{
+    .BG_GAMGold100Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGold100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_GOLD_100, white);
+}
+
+.G_LightGoldDialog
+{
+    .BG_GAMGold060Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGold060Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_GOLD_060, white);
+}
+
+.G_VeryLightGoldDialog
+{
+    .BG_GAMGold030Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGold030Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_GOLD_030, white);
+}
+
+.G_DarkGreyDialog
+{
+    .BG_GAMGrey100Tint;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGrey100Tint;
+    }
+
+    .DialogTheme(@COLOR_GAM_GREY_100, white);
+}
+
+.G_GreyDialog
+{
+    .BG_GAMGrey030;
+    &.ui-dialog-content.ui-widget-content{
+        .BG_GAMGrey030;
+    }
+    .DialogTheme(@COLOR_GAM_GREY_030, black);
+
+    // Overrides.
+    h2
+    {
+        color: @COLOR_GAM_GREEN_100;
+    }
+}
+

@@ -1,0 +1,38 @@
+﻿@using umbraco.MacroEngines
+@using Umbraco.Core
+@using Umbraco.Core.Models
+@using Umbraco.Core.Services
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+    @{
+        /****
+         * 
+         * SCRIPT               [>] snippetByPicker
+         *                      [ ] compose content into a content page
+         * -----------------------------------------------------------------------------------------------
+         * 
+         * PARAMETERS        
+         *      nodeId            [string] used to locate the content to be inserted
+         * 
+         * NOTES
+         *      
+         * 
+         ****/
+        
+            
+        // initialise
+        string content = "";
+        DynamicNode contentNode = null;
+
+        var nodeId = Parameter.picked;
+        
+        contentNode = Model.NodeById(nodeId);
+        
+        if (contentNode != null && contentNode.IsCompliedFor(UserFacade.CurrentComplianceGroup))
+        {
+            content = contentNode.GetProperty("text").Value;
+        }
+    }
+ @Html.Raw(content)
+	

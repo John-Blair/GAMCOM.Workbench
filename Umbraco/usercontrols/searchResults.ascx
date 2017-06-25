@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchResults.ascx.cs" Inherits="UmbracoWorkbench.usercontrols.searchResults" %>
+<asp:Label ID="searchParams" runat="server" Text="Hello!"></asp:Label>

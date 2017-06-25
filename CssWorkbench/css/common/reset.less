@@ -1,0 +1,25 @@
+/****
+ *  
+ *  reset.less
+ *  =========================================================================== 
+ *
+ *  custom reset values, more suited to our preferences
+ *  overrises the things normalise didn't quite get right for us
+ *
+ ****/
+ 
+// normalize introduces 40px left padding for menu, nav and ul, for our navigation elements we need to dispose of it  
+
+    menu, nav, ul {
+        padding: 0 0 0 0px;
+        margin: 0 0 0 0px;
+    }
+
+// normalize strips ul decoration from nav children, we want the same behaviour for menu children too 
+
+    menu > ul
+    {
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+    }

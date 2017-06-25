@@ -1,0 +1,23 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    /****
+         * 
+         * SCRIPT               [>] HeaderTheme
+         *                      [ ] 
+         * -----------------------------------------------------------------------------------------------
+         * 
+         * NOTES
+         *      
+         *    Find the page header theme to use by using the theme defined on the page, and falling back to using
+         *    the web config setting (Settings > WebConfig.headerTheme) if none is defined at the page level.
+         *
+         ****/
+    DynamicNode contentNode = Model;
+    var headerTheme = contentNode.SafeProperty("headerTheme");
+    if (string.IsNullOrEmpty(headerTheme))
+    {
+        headerTheme = WebConfigFacade.HeaderTheme;
+    }
+}@headerTheme

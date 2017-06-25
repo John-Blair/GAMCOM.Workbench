@@ -1,0 +1,105 @@
+/****
+ *  
+ *  documentCentre.less
+ *  =========================================================================== 
+ *
+ *  styles for the document centre page.
+ *
+ ****/
+.goButton a.smallButton {
+  background-image: url(/media/1068/bullet_triangle_white.gif);
+  background-repeat: no-repeat;
+  background-position: 90% center;
+  text-decoration: none;
+  height: 14px;
+  margin-left: 10px;
+  width: 40px;
+}
+.goButton a:before {
+  content: "";
+}
+.findDocumentTable {
+  margin-top: 10px;
+}
+.findDocumentTable .documentTitle {
+  font-size: 16px;
+  padding-right: 5px;
+  float: left;
+  margin-bottom: 10px;
+}
+.findDocumentTable .documentSearchPanel {
+  float: left;
+}
+.findDocumentTable .documentSearchPanel .documentTextbox {
+  width: 200px;
+}
+.findDocumentTable a.smallButton {
+  background-image: url(/media/1068/bullet_triangle_white.gif);
+  background-repeat: no-repeat;
+  background-position: 90% center;
+  text-decoration: none;
+  height: 14px;
+  margin-left: 10px;
+  width: 40px;
+}
+.findDocumentTable a:before {
+  content: "";
+}
+.findDocumentFilterTable {
+  margin-top: 10px;
+}
+.findDocumentFilterTable .row {
+  margin-bottom: 10px;
+}
+.findDocumentFilterTable .col1 {
+  float: left;
+  width: 240px;
+}
+.findDocumentFilterTable .col2 {
+  float: left;
+  width: 240px;
+}
+.findDocumentFilterTable input {
+  margin-right: 10px;
+}
+.selectManagerPanel {
+  margin-top: 10px;
+}
+.selectManagerPanel a.smallButton {
+  background-image: url(/media/1068/bullet_triangle_white.gif);
+  background-repeat: no-repeat;
+  background-position: 90% center;
+  text-decoration: none;
+  height: 14px;
+  margin-left: 10px;
+  width: 40px;
+}
+.selectManagerPanel a:before {
+  content: "";
+}
+.selectManagerPanel select {
+  height: 22px;
+}
+.selectManagerPanel .selectManagerTitle {
+  font-size: 16px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+}
+@media (max-width: 505px) {
+  .findDocumentFilterTable .row {
+    margin-bottom: 0px;
+  }
+  .findDocumentFilterTable .col1,
+  .findDocumentFilterTable .col2 {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 479px) {
+  .findDocumentFilterTable .row {
+    margin-bottom: 0px;
+  }
+  .findDocumentFilterTable .col1,
+  .findDocumentFilterTable .col2 {
+    margin-bottom: 10px;
+  }
+}

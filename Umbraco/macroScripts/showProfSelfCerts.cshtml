@@ -1,0 +1,24 @@
+﻿@using umbraco.MacroEngines
+@using Gam.Umbraco.Helpers
+
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    var targetNodeId = umbraco.library.RequestQueryString("targetnode");
+    var countryList = SelfCertificationFacade.fetchProfSelfCertOptions(targetNodeId);
+    
+    <div class="selfCertList">
+    @foreach(var eachCountry in countryList)
+    {
+        if (eachCountry.IsActive)
+        {
+            <a href='#' onclick="javascript:certifyProf.as('@eachCountry.ComplianceGroup', '@eachCountry.CountryNodeId');" class="G_Highlight G_ListSeparator">@eachCountry.CountryName</a> 
+        }
+        else
+        {
+            <a href="#" class="G_ListSeparator inactiveLink">@eachCountry.CountryName</a> 
+        }
+    }
+    </div>
+    
+    <script type="text/javascript" src="/scripts/app/macro/showProfSelfCerts.js"></script>
+}

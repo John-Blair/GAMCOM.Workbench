@@ -1,0 +1,82 @@
+/****
+ *  
+ *  tile.media.less
+ *  =========================================================================== 
+ *
+ *  tile and tile container width definitions, varied by media constraints
+ *
+ *
+ ****/
+.tileContainer {
+  width: 1024px;
+}
+@media (max-width: 1023px) {
+  .tileContainer {
+    width: 765px;
+  }
+}
+@media (max-width: 764px) {
+  .tileContainer {
+    width: 506px;
+  }
+}
+@media (max-width: 505px) {
+  .tileContainer {
+    width: 480px;
+  }
+  .tile,
+  .tile-wide {
+    width: 480px;
+  }
+}
+@media (max-width: 479px) {
+  .tileContainer {
+    width: 320px;
+  }
+  .tile,
+  .tile-wide {
+    width: 320px;
+  }
+}
+/****
+ *  
+ *  compact/non-compact definitions
+ *  =========================================================================== 
+ *
+ *  the tile display has two distinct modes, one when tiles behave like tiles
+ *  and a compact mode when the tiles fill the width of the browser and just float
+ *  in a stack
+ *
+ *  the following defintions are tweaks that operate across those two boundaries
+ *  along with some user utility styles to show or hide content in those two modes
+ *
+ ****/
+@media (min-width: 506px) {
+  .G_ShowWhenCompact {
+    display: none;
+  }
+}
+@media (max-width: 505px) {
+  .G_ShowWhenTiled {
+    display: none;
+  }
+  .tile {
+    height: auto;
+  }
+  .tileContent .G_PositionTileFooter {
+    position: static;
+    margin-top: 10px;
+  }
+  .tileContent .G_TileHeadingLong {
+    padding-bottom: 14px;
+  }
+  .tileContent .G_Alert {
+    height: auto;
+  }
+  .tileContent .tileContent > h2 {
+    padding-bottom: 7px;
+  }
+  .tileContent .selfCertList a {
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Handheld</title>
+    <script src="../scripts/lib/jQuery/jquery-1.10.2.min.js"></script>
+
+    <style>
+            #handheld {
+                display:none;
+            }
+
+             #notHandheld {
+                display:block;
+            }
+
+
+        @media handheld {
+            #handheld {
+                display:block;
+            }
+
+            #notHandheld {
+                display:none;
+            }
+
+
+        }
+
+    </style>
+
+
+</head>
+<body>
+<div id="handheld">Handheld device</div>
+<div id="notHandheld">NOT Handheld device</div>
+</body>
+</html>
