@@ -43,7 +43,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="umbraco">
-      <HintPath>E:\gam.com.umbraco\bin\umbraco.dll</HintPath>
+      <HintPath>c:\umbraco\bin\umbraco.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Q /Y "$(TargetPath)" "E:\gam.com.umbraco\bin"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Q /Y "$(TargetPath)" "c:\umbraco\bin"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

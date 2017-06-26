@@ -24,6 +24,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,13 +51,16 @@
     <Content Include="css\single\styles\components\tile.less" />
     <Content Include="css\common\reset.less" />
     <Content Include="pages\GamColours.html" />
+    <Content Include="pages\tinted.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="css\single.import.less" />
     <Content Include="css\single\layouts\baseLayout.less" />
     <Content Include="css\single\layouts\homepageLayout.less" />

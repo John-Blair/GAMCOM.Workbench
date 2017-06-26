@@ -51,15 +51,15 @@
   <ItemGroup>
     <Reference Include="businesslogic, Version=1.0.4869.18013, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\businesslogic.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\businesslogic.dll</HintPath>
     </Reference>
     <Reference Include="cms, Version=1.0.4869.18014, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\gam.com.umbraco\bin\cms.dll</HintPath>
+      <HintPath>c:\umbraco\bin\cms.dll</HintPath>
     </Reference>
     <Reference Include="interfaces, Version=1.0.4869.18012, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,22 +70,22 @@
     <Reference Include="System.Xml" />
     <Reference Include="umbraco, Version=1.0.4869.18015, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\umbraco.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Core, Version=1.0.4869.18012, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\Umbraco.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\Umbraco.Core.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.DataLayer, Version=1.0.4869.18013, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\umbraco.DataLayer.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\umbraco.DataLayer.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.editorControls">
-      <HintPath>..\..\..\..\Umbraco\bin\umbraco.editorControls.dll</HintPath>
+      <HintPath>..\..\..\..\..\Umbraco\bin\umbraco.editorControls.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.4869.18016, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\umbraco.MacroEngines.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\umbraco.MacroEngines.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -319,7 +319,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>robocopy "$(ProjectDir)bin" "e:\gam.com.umbraco\bin" "$(TargetName).dll" /E /XO /XD ".svn"
+    <PostBuildEvent>robocopy "$(ProjectDir)bin" "c:\umbraco\bin" "$(TargetName).dll" /E /XO /XD ".svn"
 robocopy "$(ProjectDir)usercontrols" "e:\gam.com.umbraco\usercontrols" "*.ascx" /E /XO /XD ".svn"
 robocopy "$(ProjectDir)app_code" "e:\gam.com.umbraco\App_Code" "*.*" /MIR
 robocopy "$(ProjectDir)scripts" "e:\gam.com.umbraco\scripts" "*.*" /E /XO /XD ".svn"

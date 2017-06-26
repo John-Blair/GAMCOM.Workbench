@@ -37,18 +37,18 @@
   <ItemGroup>
     <Reference Include="businesslogic, Version=1.0.4869.18013, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\businesslogic.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\businesslogic.dll</HintPath>
     </Reference>
     <Reference Include="cms, Version=1.0.4869.18014, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\gam.com.umbraco\bin\cms.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\cms.dll</HintPath>
     </Reference>
     <Reference Include="interfaces">
-      <HintPath>..\..\..\Umbraco\bin\interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,18 +60,18 @@
     <Reference Include="System.Xml" />
     <Reference Include="umbraco, Version=1.0.4869.18015, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\umbraco.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\umbraco.dll</HintPath>
     </Reference>
     <Reference Include="Umbraco.Core, Version=1.0.4869.18012, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Umbraco\bin\Umbraco.Core.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\Umbraco.Core.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.DataLayer, Version=1.0.4869.18013, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\gam.com.umbraco\bin\umbraco.DataLayer.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\umbraco.DataLayer.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines">
-      <HintPath>..\..\..\Umbraco\bin\umbraco.MacroEngines.dll</HintPath>
+      <HintPath>..\..\..\..\umbraco\bin\umbraco.MacroEngines.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

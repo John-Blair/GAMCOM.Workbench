@@ -43,10 +43,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="businesslogic">
-      <HintPath>..\..\..\Umbraco\bin\businesslogic.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\businesslogic.dll</HintPath>
     </Reference>
     <Reference Include="interfaces">
-      <HintPath>..\..\..\Umbraco\bin\interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -66,10 +66,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="umbraco">
-      <HintPath>..\..\..\Umbraco\bin\umbraco.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\umbraco.dll</HintPath>
     </Reference>
     <Reference Include="umbraco.MacroEngines">
-      <HintPath>..\..\..\Umbraco\bin\umbraco.MacroEngines.dll</HintPath>
+      <HintPath>..\..\..\..\Umbraco\bin\umbraco.MacroEngines.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
